@@ -1,0 +1,16 @@
+auto-update = off
+cursor-invert-fg-bg = true
+cursor-style-blink = false
+font-family = IosevkaTerm NF
+font-size = 12
+mouse-hide-while-typing = true
+theme = Dark+
+gtk-titlebar-hide-when-maximized = true
+confirm-close-surface = false
+
+# see https://github.com/ghostty-org/ghostty/issues/4800#issuecomment-2685774252
+app-notifications = no-clipboard-copy
+
+keybind = ctrl+shift+o=unbind
+keybind = ctrl+enter=unbind
+keybind = f11=toggle_fullscreen
