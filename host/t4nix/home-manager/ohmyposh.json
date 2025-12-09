@@ -1,0 +1,51 @@
+{
+  "version": 3,
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "transient_prompt": {
+    "template": "[{{ now | date \"15:04:05\" }}] {{ .PWD }} > ",
+    "foreground": "#FFC800",
+    "background": "transparent"
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none",
+            "style": "full"
+          },
+          "template": "{{ .Path }} ",
+          "foreground": "cyan",
+          "type": "path",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "branch_icon": " <#ff94df><b>\ue0a0 </b></>",
+            "cache_duration": "none",
+            "fetch_stash_count": true
+          },
+          "template": "<#ffffff>on</> {{ .HEAD }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          "foreground": "#ff94df",
+          "type": "git",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "$> ",
+          "type": "text",
+          "style": "plain",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}red{{ end }}",
+            "{{ if eq .Code 0 }}lightGreen{{ end }}"
+          ]
+        }
+      ]
+    }
+  ]
+}
+

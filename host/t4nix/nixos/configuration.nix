@@ -1,0 +1,87 @@
+{
+  outputs,
+  pkgs,
+  ...
+}: {
+  networking = {
+    hostName = "t4nix";
+    networkmanager.enable = true;
+  };
+  system.stateVersion = "23.11";
+
+  nixpkgs = {
+    overlays = builtins.attrValues outputs.overlays;
+    config = {
+      allowUnfree = true;
+    };
+  };
+
+  nix.settings = {experimental-features = toString ["nix-command" "flakes"];};
+
+  time.timeZone = "Asia/Jakarta";
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  fonts.packages = builtins.attrValues {
+    inherit (pkgs.systemPackages) inter;
+    inherit
+      (pkgs.systemPackages.nerd-fonts)
+      blex-mono
+      iosevka-term
+      ;
+  };
+
+  console = {
+    packages = [pkgs.systemPackages.terminus_font];
+    earlySetup = true;
+    font = "${pkgs.systemPackages.terminus_font}/share/consolefonts/ter-132n.psf.gz";
+    keyMap = "us";
+  };
+
+  services = {
+    desktopManager.plasma6.enable = true;
+    tailscale.enable = true;
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      theme = "where_is_my_sddm_theme";
+      settings.General.DisplayServer = "wayland";
+    };
+    cloudflare-warp.enable = true;
+  };
+
+  programs = {
+    nix-ld = {
+      enable = true;
+      package = pkgs.systemPackages.nix-ld;
+    };
+    wireshark.enable = true;
+    mtr.enable = true;
+    nh.enable = true;
+  };
+
+  environment.systemPackages = [
+    pkgs.neovim
+    (pkgs.systemPackages.where-is-my-sddm-theme.override {
+      themeConfig.General = {
+        passwordCharacter = "*";
+        passwordMask = true;
+        passwordInputWidth = 0.5;
+        passwordInputBackground = "";
+        passwordInputRadius = "";
+        passwordInputCursorVisible = true;
+        passwordFontSize = 96;
+        passwordCursorColor = "random";
+        passwordTextColor = "";
+        showSessionsByDefault = false;
+        sessionsFontSize = 24;
+        showUsersByDefault = false;
+        usersFontSize = 48;
+        background = "";
+        backgroundFill = "#000000";
+        backgroundFillMode = "aspect";
+        basicTextColor = "#ffffff";
+        blurRadius = "";
+      };
+    })
+  ];
+}
