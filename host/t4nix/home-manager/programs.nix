@@ -18,6 +18,7 @@ in {
     bat.enable = true;
     lsd.enable = true;
     tealdeer.enable = true;
+    k9s.enable = true;
   };
 
   services = {
