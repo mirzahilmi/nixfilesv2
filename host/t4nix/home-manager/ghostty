@@ -7,8 +7,12 @@ mouse-hide-while-typing = true
 theme = Dark+
 gtk-titlebar-hide-when-maximized = true
 confirm-close-surface = false
+
 # see https://github.com/ghostty-org/ghostty/issues/4800#issuecomment-2685774252
 app-notifications = no-clipboard-copy
+
+# see https://vninja.net/2024/12/28/ghostty-workaround-for-missing-or-unsuitable-terminal-xterm-ghostty/
+shell-integration-features = ssh-env,ssh-terminfo
 
 keybind = ctrl+shift+o=unbind
 keybind = ctrl+enter=unbind

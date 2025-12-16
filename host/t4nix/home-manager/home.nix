@@ -53,6 +53,8 @@
     unzip
     zip
     neovim
+    wget
+    lz4
   ];
 
   xdg.configFile."ghostty/config".source =

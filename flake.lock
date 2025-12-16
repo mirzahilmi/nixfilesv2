@@ -215,8 +215,8 @@
         "plugins-showkeys": "plugins-showkeys"
       },
       "locked": {
-        "lastModified": 1765318402,
-        "narHash": "sha256-MTJl3HBo3/FbXymw0WjUL3KD0gXZPnkxFiIiyiKWnXM=",
+        "lastModified": 1765354063,
+        "narHash": "sha256-yZ8XE82UJCqQ1ZmAvCH2qlh/smsDdLk4JsHwAdfH660=",
         "path": "/home/mirza/.config/nvim",
         "type": "path"
       },
