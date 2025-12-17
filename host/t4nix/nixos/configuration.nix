@@ -5,7 +5,11 @@
 }: {
   networking = {
     hostName = "t4nix";
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      # see https://github.com/NixOS/nixpkgs/issues/424326#issuecomment-3062893416
+      plugins = with pkgs; [networkmanager-openvpn];
+    };
   };
   system.stateVersion = "23.11";
 
@@ -96,16 +100,15 @@
         passwordInputRadius = "";
         passwordInputCursorVisible = true;
         passwordFontSize = 96;
-        passwordCursorColor = "random";
         passwordTextColor = "";
         showSessionsByDefault = false;
         sessionsFontSize = 24;
         showUsersByDefault = false;
         usersFontSize = 48;
         background = "";
-        backgroundFill = "#000000";
+        backgroundFill = "#0E0E10";
         backgroundFillMode = "aspect";
-        basicTextColor = "#ffffff";
+        basicTextColor = "#F9F6EE";
         blurRadius = "";
       };
     })
