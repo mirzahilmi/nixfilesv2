@@ -66,6 +66,10 @@
         system = x86;
         modules = [inputs.hardware.nixosModules.lenovo-thinkpad-t480s];
       };
+      k8s-slave-2-nixos = mkSystem {
+        hostname = "k8s-slave-2-nixos";
+        system = x86;
+      };
     };
 
     homeConfigurations = let
@@ -74,6 +78,11 @@
         system = x86;
         username = "mirza";
         hostname = "t4nix";
+      };
+      "member@k8s-slave-2-nixos" = mkHome {
+        system = x86;
+        username = "member";
+        hostname = "k8s-slave-2-nixos";
       };
     };
   };
