@@ -149,7 +149,7 @@ in {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks."default".addKeysToAgent = "3h";
+    matchBlocks."*".addKeysToAgent = "3h";
   };
   programs.tmux = {
     enable = true;

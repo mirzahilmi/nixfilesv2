@@ -55,6 +55,9 @@
     neovim
     wget
     lz4
+    age
+    ssh-to-age
+    sops
   ];
 
   xdg.configFile."ghostty/config".source =

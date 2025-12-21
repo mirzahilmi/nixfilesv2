@@ -17,6 +17,14 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    mysecrets = {
+      url = "git+ssh://git@ssh.github.com:443/mirzahilmi/sops.git?ref=master&shallow=1";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -39,7 +47,9 @@
     }:
       nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = libx.listNixfiles ./host/${hostname}/nixos ++ [];
+        modules =
+          libx.listNixfiles ./host/${hostname}/nixos
+          ++ libx.listNixfiles ./host/shared/nixos;
         specialArgs = {inherit inputs outputs libx;};
       };
 
@@ -66,8 +76,8 @@
         system = x86;
         modules = [inputs.hardware.nixosModules.lenovo-thinkpad-t480s];
       };
-      k8s-slave-2-nixos = mkSystem {
-        hostname = "k8s-slave-2-nixos";
+      k8s-slave-1-nixos = mkSystem {
+        hostname = "k8s-slave-1-nixos";
         system = x86;
       };
     };
@@ -79,10 +89,10 @@
         username = "mirza";
         hostname = "t4nix";
       };
-      "member@k8s-slave-2-nixos" = mkHome {
+      "member@k8s-slave-1-nixos" = mkHome {
         system = x86;
         username = "member";
-        hostname = "k8s-slave-2-nixos";
+        hostname = "k8s-slave-1-nixos";
       };
     };
   };

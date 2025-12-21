@@ -119,4 +119,6 @@
     enableOnBoot = false;
     autoPrune.enable = true;
   };
+
+  environment.sessionVariables.EDITOR = "nvim";
 }

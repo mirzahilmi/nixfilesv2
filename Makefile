@@ -1,7 +1,7 @@
 .PHONY: os
 os:
 	git add --all
-	sudo nixos-rebuild switch --flake .
+	nixos-rebuild switch --sudo --flake .
 
 .PHONY: home
 home:

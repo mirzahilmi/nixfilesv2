@@ -1,13 +1,13 @@
 {
   outputs,
   pkgs,
-lib,
+  config,
   ...
 }: {
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
 
-  networking.hostName = "k8s-slave-2-nixos";
+  networking.hostName = "k8s-slave-1-nixos";
   networking.networkmanager.enable = true;
   system.stateVersion = "25.11"; # Did you read the comment?
 
@@ -53,18 +53,18 @@ lib,
   services.k3s = {
     enable = true;
     role = "agent";
-    nodeName = "k8s-slave-2-nixos";
-    tokenFile = "/tmp/k3stoken";
-    serverAddr = "http://example.com";
+    nodeName = "k8s-slave-1-nixos";
+    tokenFile = config.sops.secrets."k3s/token".path;
+    configPath = config.sops.templates."k3s-config.yaml".path;
 
     extraKubeProxyConfig = {
-  clientConnection = {
-    kubeconfig = "/var/lib/rancher/k3s/agent/kubeproxy.kubeconfig";
-  };
+      clientConnection = {
+        kubeconfig = "/var/lib/rancher/k3s/agent/kubeproxy.kubeconfig";
+      };
       mode = "nftables";
     };
   };
 
-programs.tcpdump.enable = true;
-networking.firewall.enable=false;
+  programs.tcpdump.enable = true;
+  networking.firewall.enable = false;
 }

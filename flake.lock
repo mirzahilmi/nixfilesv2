@@ -98,6 +98,24 @@
         "type": "github"
       }
     },
+    "mysecrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766326242,
+        "narHash": "sha256-tMc3F6/xgf7RPuQe9Erc9nEpCM3tNnDuWfj9rFLndzY=",
+        "ref": "master",
+        "rev": "96e3f4b3ba49bcfbd6fd3be737e906d822ed24cd",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@ssh.github.com:443/mirzahilmi/sops.git"
+      },
+      "original": {
+        "ref": "master",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@ssh.github.com:443/mirzahilmi/sops.git"
+      }
+    },
     "nixCats": {
       "locked": {
         "lastModified": 1753170780,
@@ -277,10 +295,12 @@
       "inputs": {
         "hardware": "hardware",
         "home-manager": "home-manager",
+        "mysecrets": "mysecrets",
         "nixpkgs": "nixpkgs",
         "nixpkgs-system": "nixpkgs-system",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvim": "nvim",
+        "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix"
       }
     },
@@ -298,6 +318,26 @@
         "owner": "rust-lang",
         "ref": "nightly",
         "repo": "rust-analyzer",
+        "type": "github"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765836173,
+        "narHash": "sha256-hWRYfdH2ONI7HXbqZqW8Q1y9IRbnXWvtvt/ONZovSNY=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "443a7f2e7e118c4fc63b7fae05ab3080dd0e5c63",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
         "type": "github"
       }
     },
