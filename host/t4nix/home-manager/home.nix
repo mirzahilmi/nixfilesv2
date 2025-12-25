@@ -58,6 +58,7 @@
     age
     ssh-to-age
     sops
+    vscode
   ];
 
   xdg.configFile."ghostty/config".source =
