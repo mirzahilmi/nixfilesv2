@@ -20,6 +20,22 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  users.users.hilmi = {
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
+    packages = [pkgs.systemPackages.home-manager];
+  };
+
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+  ];
+
+  programs.firefox.enable = true;
+
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
@@ -36,21 +52,7 @@
     pulse.enable = true;
   };
   services.openssh.enable = true;
-
-  users.users.hilmi = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-    ];
-    packages = [pkgs.systemPackages.home-manager];
-  };
-
-  environment.systemPackages = with pkgs; [
-    vim
-    git
-  ];
-  programs.firefox.enable = true;
+  services.tailscale.enable = true;
 
   system.stateVersion = "25.11";
 }
