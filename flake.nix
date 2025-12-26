@@ -8,6 +8,7 @@
 
     hardware.url = "github:nixos/nixos-hardware";
     nvim.url = "/home/mirza/.config/nvim";
+    nvim-git.url = "github:mirzahilmi/nvim";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";

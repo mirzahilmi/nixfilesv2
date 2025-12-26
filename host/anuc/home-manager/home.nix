@@ -10,7 +10,7 @@
   };
 
   home.packages = with pkgs; [
-    neovim
+    neovim-git
     k6
     btop
     fastfetch
