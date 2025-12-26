@@ -3,13 +3,11 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "anuc";
-
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/New_York";
 
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -25,12 +23,10 @@
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
-
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
-
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -39,6 +35,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  services.openssh.enable = true;
 
   users.users.hilmi = {
     isNormalUser = true;
@@ -49,14 +46,11 @@
     packages = [pkgs.systemPackages.home-manager];
   };
 
-  programs.firefox.enable = true;
-
   environment.systemPackages = with pkgs; [
     vim
     git
   ];
-
-  services.openssh.enable = true;
+  programs.firefox.enable = true;
 
   system.stateVersion = "25.11";
 }

@@ -59,7 +59,9 @@
       system,
     }:
       home-manager.lib.homeManagerConfiguration {
-        modules = libx.listNixfiles ./host/${hostname}/home-manager ++ [];
+        modules =
+          libx.listNixfiles ./host/${hostname}/home-manager
+          ++ libx.listNixfiles ./host/shared/home-manager;
         pkgs = nixpkgs.legacyPackages.${system};
         extraSpecialArgs = {
           inherit inputs outputs libx;
@@ -97,6 +99,11 @@
         system = x86;
         username = "member";
         hostname = "k8s-slave-1-nixos";
+      };
+      "hilmi@anuc" = mkHome {
+        system = x86;
+        username = "hilmi";
+        hostname = "anuc";
       };
     };
   };
