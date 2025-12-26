@@ -80,6 +80,10 @@
         hostname = "k8s-slave-1-nixos";
         system = x86;
       };
+      anuc = mkSystem {
+        hostname = "anuc";
+        system = x86;
+      };
     };
 
     homeConfigurations = let

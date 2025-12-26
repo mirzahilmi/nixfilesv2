@@ -13,13 +13,6 @@
   };
   system.stateVersion = "23.11";
 
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-    };
-  };
-
   nix.settings = {
     experimental-features = toString ["nix-command" "flakes"];
     trusted-users = ["mirza"];
