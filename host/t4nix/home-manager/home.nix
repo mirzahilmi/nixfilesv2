@@ -1,52 +1,55 @@
 {
   pkgs,
   config,
+  secrets,
   ...
 }: {
   home = {
-    username = "mirza";
+    username = secrets.user.primary.username;
     stateVersion = "23.11";
   };
 
   home.packages = with pkgs; [
-    wl-clipboard
+    age
+    anydesk
+    bat
+    burpsuite
+    dig
+    discord
+    drawio
+    eduvpn-client
+    exiftool
+    fd
+    gnumake
     insomnia
     jetbrains.datagrip
-    discord
-    mermaid-cli
-    eduvpn-client
-    usbutils
-    zotero
-    drawio
-    postgresql
-    postman
-    obsidian
     kind
     kubectl
     kubectl-explore
-    ungoogled-chromium
-    burpsuite
-    wireshark
-    minikube
-    openssl
-    exiftool
-    tokei
-    anydesk
-    slack
-    dig
-    fd
-    nmap
-    unzip
-    zip
-    neovim
-    wget
     lz4
-    age
-    ssh-to-age
+    mermaid-cli
+    minikube
+    neovim
+    nmap
+    obsidian
+    open-github
+    openssl
+    postgresql
+    postman
+    slack
     sops
+    ssh-to-age
+    tokei
+    ungoogled-chromium
+    unzip
+    usbutils
     vscode
+    wget
+    wireshark
+    wl-clipboard
+    zip
+    zotero
     zstd
-    gnumake
   ];
 
   xdg.configFile."ghostty/config".source =
