@@ -14,6 +14,7 @@
     anydesk
     bat
     burpsuite
+    chafa
     dig
     discord
     drawio
