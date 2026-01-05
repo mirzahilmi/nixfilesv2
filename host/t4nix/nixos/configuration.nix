@@ -68,8 +68,11 @@
     };
     wireshark.enable = true;
     mtr.enable = true;
-    nh.enable = true;
     zsh.enable = true;
+    nh = {
+      enable = true;
+      flake = "/home/${secrets.user.primary.username}/nixfilesv2";
+    };
   };
 
   environment.systemPackages = with pkgs; [

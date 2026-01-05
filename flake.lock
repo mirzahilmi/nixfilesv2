@@ -287,11 +287,11 @@
         "plugins-showkeys": "plugins-showkeys"
       },
       "locked": {
-        "lastModified": 1767115165,
-        "narHash": "sha256-LQiKg4GvAqc3EmYdKlM5GTFY+Qbr9JP8FMfgBZNK350=",
+        "lastModified": 1767634667,
+        "narHash": "sha256-tY5ZmsYXELkTIgpY0wElLrNeAFWHgmclEDZ98Ely+vg=",
         "owner": "mirzahilmi",
         "repo": "nvim",
-        "rev": "98141d01efe4cb1782145f011ac19d3630188e15",
+        "rev": "f484bfcc92cea19dacb71e173417fce782a5bab4",
         "type": "github"
       },
       "original": {
