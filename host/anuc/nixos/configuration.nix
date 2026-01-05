@@ -39,7 +39,13 @@
     git
   ];
 
-  programs.firefox.enable = true;
+  programs = {
+    firefox.enable = true;
+    nh = {
+      enable = true;
+      flake = "/home/${secrets.user.secondary.username}/nixfilesv2";
+    };
+  };
 
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
