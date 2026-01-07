@@ -129,5 +129,15 @@
         args = {inherit secrets;};
       };
     };
+
+    # templates are modified version of https://github.com/the-nix-way/dev-templates
+    templates = {
+      go = {
+        path = ./devshell/go;
+        welcomeText = ''
+          Hello, Go 1.25.5!
+        '';
+      };
+    };
   };
 }
