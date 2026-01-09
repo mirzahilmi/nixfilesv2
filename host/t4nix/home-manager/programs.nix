@@ -15,12 +15,16 @@ in {
     ripgrep.enable = true;
     lsd.enable = true;
     tealdeer.enable = true;
-    k9s.enable = true;
   };
 
   services = {
     ssh-agent.enable = true;
   };
+
+  programs.k9s.enable = true;
+  xdg.configFile."k9s/skins/transparent.yaml".source =
+    config.lib.file.mkOutOfStoreSymlink
+    "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/k9s_transparent.yaml";
 
   programs.spicetify = {
     enable = true;
@@ -45,6 +49,13 @@ in {
     enable = true;
     package = pkgs.unstable.ghostty;
   };
+  xdg.configFile."ghostty/shaders" = {
+    recursive = true;
+    source =
+      config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/ghostty_shaders";
+  };
+
   programs.obs-studio = {
     enable = true;
     plugins = builtins.attrValues {

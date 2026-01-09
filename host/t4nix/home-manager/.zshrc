@@ -9,6 +9,8 @@ alias lg='lazygit'
 alias k9='k9s'
 alias k='kubectl'
 
+export K9S_SKIN="transparent"
+
 HISTFILE="${HOME}/.config/zsh/history"
 # see https://github.com/rothgar/mastering-zsh/blob/master/docs/config/history.md#configuration
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.

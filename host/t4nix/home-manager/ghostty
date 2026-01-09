@@ -18,3 +18,15 @@ keybind = f11=toggle_fullscreen
 background-image = ~/Downloads/a_video_game_screen_of_a_video_game.jpg
 background-image-opacity = 0.08
 background-image-fit = cover
+
+# # fresh ahh water
+# custom-shader = ~/.config/ghostty/shaders/glitchy.glsl
+# custom-shader = ~/.config/ghostty/shaders/crt.glsl
+# custom-shader = ~/.config/ghostty/shaders/water.glsl
+# custom-shader = ~/.config/ghostty/shaders/bloom.glsl
+
+# # retro terminal
+# custom-shader = ~/.config/ghostty/shaders/retro.glsl
+# custom-shader = ~/.config/ghostty/shaders/tft.glsl
+
+custom-shader = ~/.config/ghostty/shaders/cursor_neovide.glsl
