@@ -37,6 +37,7 @@
     openssl
     postgresql
     postman
+    rendercv
     slack
     sops
     ssh-to-age

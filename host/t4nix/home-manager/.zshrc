@@ -1,9 +1,13 @@
+# see https://wiki.archlinux.org/title/Tmux#Start_tmux_on_every_shell_login
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+    exec tmux new-session -A -s ${USER} >/dev/null 2>&1
+fi
+
 alias v='nvim'
 alias mk='make'
 alias lg='lazygit'
 alias k9='k9s'
 alias k='kubectl'
-
 
 HISTFILE="${HOME}/.config/zsh/history"
 # see https://github.com/rothgar/mastering-zsh/blob/master/docs/config/history.md#configuration
@@ -21,6 +25,7 @@ setopt APPEND_HISTORY            # append to history file
 setopt HIST_NO_STORE             # Don't store history commands
 
 bindkey -e
+bindkey '^ ' autosuggest-accept
 
 # end profiling
 [[ -n "${ZSH_DEBUGRC+1}" ]] && zprof
