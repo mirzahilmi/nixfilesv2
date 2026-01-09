@@ -2,7 +2,7 @@ auto-update = off
 cursor-invert-fg-bg = true
 cursor-style-blink = false
 font-family = IosevkaTerm NF
-font-size = 12
+font-size = 13
 mouse-hide-while-typing = true
 theme = Dark+
 gtk-titlebar-hide-when-maximized = true
@@ -14,3 +14,7 @@ app-notifications = no-clipboard-copy
 keybind = ctrl+shift+o=unbind
 keybind = ctrl+enter=unbind
 keybind = f11=toggle_fullscreen
+
+background-image = ~/Downloads/a_video_game_screen_of_a_video_game.jpg
+background-image-opacity = 0.08
+background-image-fit = cover

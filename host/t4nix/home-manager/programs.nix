@@ -147,7 +147,7 @@ in {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks."*".addKeysToAgent = "6h";
+    matchBlocks."*".addKeysToAgent = "12h";
   };
 
   programs.tmux = {
@@ -182,12 +182,6 @@ in {
       # start profiling
       [[ -n "''${ZSH_DEBUGRC+1}" ]] && zmodload zsh/zprof
       eval "$(${lib.getExe pkgs.oh-my-posh} init zsh --config ${config.xdg.configHome}/oh-my-posh/config.json)"
-
-
-      # see https://wiki.archlinux.org/title/Tmux#Start_tmux_on_every_shell_login
-      if [ -x "$(command -v tmux)" ] && [ -n "''${DISPLAY}" ] && [ -z "''${TMUX}" ]; then
-          exec tmux new-session -A -s ''${USER} -e SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/${config.services.ssh-agent.socket} >/dev/null 2>&1
-      fi
 
       source ${config.xdg.configHome}/zsh/extra.zshrc
     '';
