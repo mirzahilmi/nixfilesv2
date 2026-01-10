@@ -138,6 +138,12 @@
           Hello, Go 1.25.5!
         '';
       };
+      python = {
+        path = ./devshell/python;
+        welcomeText = ''
+          Hello, Python!
+        '';
+      };
     };
   };
 }
