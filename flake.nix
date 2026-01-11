@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-system.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-24_05.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-25_05.url = "github:nixos/nixpkgs/nixos-25.05";
 
     hardware.url = "github:nixos/nixos-hardware";
@@ -31,6 +32,10 @@
       url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor?ref=25.05";
       inputs.nixpkgs.follows = "nixpkgs-25_05";
     };
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs-24_05";
+    };
   };
 
   outputs = {
@@ -41,6 +46,8 @@
   } @ inputs: let
     inherit (self) outputs;
     x86 = "x86_64-linux";
+    aarch64 = "aarch64-linux";
+
     overlays = import ./overlay.nix {inherit inputs;};
     libx = import ./lib.nix {
       lib = nixpkgs.lib // home-manager.lib;
@@ -83,6 +90,26 @@
             osConfig = outputs.nixosConfigurations.${hostname}.config;
           };
       };
+
+    mkDroid = {
+      hostname,
+      system,
+      modules ? [],
+      args ? {},
+    }: 
+      inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+        pkgs = import inputs.nixpkgs-24_05 {
+    overlays = builtins.attrValues outputs.overlays;                                                config = {
+      allowUnfree = true;
+    };
+};
+        modules =
+          libx.listNixfiles ./host/${hostname}/droid
+          ++ libx.listNixfiles ./host/shared/droid
+          ++ modules;
+        extraSpecialArgs = args // {inherit inputs outputs;};
+      };
+    
   in {
     inherit overlays;
 
@@ -127,6 +154,13 @@
         username = secrets.user.secondary.username;
         hostname = "anuc";
         args = {inherit secrets;};
+      };
+    };
+
+    nixOnDroidConfigurations = {
+      ayam = mkDroid {
+        system = aarch64;
+        hostname = "ayam";
       };
     };
 
