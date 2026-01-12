@@ -96,20 +96,21 @@
       system,
       modules ? [],
       args ? {},
-    }: 
+    }:
       inputs.nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import inputs.nixpkgs-24_05 {
-    overlays = builtins.attrValues outputs.overlays;                                                config = {
-      allowUnfree = true;
-    };
-};
+          inherit system;
+          overlays = builtins.attrValues outputs.overlays;
+          config = {
+            allowUnfree = true;
+          };
+        };
         modules =
           libx.listNixfiles ./host/${hostname}/droid
           ++ libx.listNixfiles ./host/shared/droid
           ++ modules;
         extraSpecialArgs = args // {inherit inputs outputs;};
       };
-    
   in {
     inherit overlays;
 
@@ -130,6 +131,14 @@
       anuc = mkSystem {
         system = x86;
         hostname = "anuc";
+        args = {inherit secrets;};
+      };
+      nixsina = mkSystem {
+        hostname = "nixsina";
+        system = x86;
+        modules = [
+          inputs.hardware.nixosModules.lenovo-legion-15arh05h
+        ];
         args = {inherit secrets;};
       };
     };
@@ -153,6 +162,12 @@
         system = x86;
         username = secrets.user.secondary.username;
         hostname = "anuc";
+        args = {inherit secrets;};
+      };
+      "nixsina@nixsina" = mkHome {
+        system = x86;
+        username = secrets.user.primary.username;
+        hostname = "nixsina";
         args = {inherit secrets;};
       };
     };
