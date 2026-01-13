@@ -94,7 +94,9 @@
       }
     ];
   };
+
   services.logind.lidSwitch = "lock";
+  services.xserver.displayManager.gdm.autoSuspend = false;
 
   users.extraUsers."${secrets.user.primary.username}" = {
     isNormalUser = true;
