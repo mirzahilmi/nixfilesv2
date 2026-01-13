@@ -5,6 +5,7 @@
   ...
 }: {
   networking.hostName = "nixsina";
+  system.stateVersion = "23.11";
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   programs = {
@@ -35,29 +36,34 @@
       ;
   };
 
-  desktop.gnome = {
+  services.xserver = {
     enable = true;
-    excludePackages = builtins.attrValues {
-      inherit
-        (pkgs)
-        atomix
-        cheese
-        epiphany
-        geary
-        gedit
-        gnome-contacts
-        gnome-maps
-        gnome-music
-        gnome-terminal
-        gnome-text-editor
-        gnome-tour
-        hitori
-        iagno
-        tali
-        xterm
-        yelp
-        ;
+    desktopManager.gnome.enable = true;
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
     };
+  };
+  environment.gnome.excludePackages = builtins.attrValues {
+    inherit
+      (pkgs)
+      atomix
+      cheese
+      epiphany
+      geary
+      gedit
+      gnome-contacts
+      gnome-maps
+      gnome-music
+      gnome-terminal
+      gnome-text-editor
+      gnome-tour
+      hitori
+      iagno
+      tali
+      xterm
+      yelp
+      ;
   };
 
   boot.loader = {
@@ -68,7 +74,6 @@
       device = "nodev";
       efiSupport = true;
       useOSProber = true;
-      theme = pkgs.grubThemes.fallout;
       backgroundColor = "#000000";
     };
   };
@@ -81,18 +86,16 @@
 
   services.openssh.enable = true;
   networking = {
-    defaultGateway = "10.34.238.1";
-    nameservers = [
-      "10.34.0.53"
-      "175.45.184.73"
-      "175.45.184.165"
-    ];
     interfaces.eno1.ipv4.addresses = [
       {
-        address = "10.34.239.56";
+        address = "10.34.239.139";
         prefixLength = 23;
       }
     ];
+    defaultGateway = {
+      address = "10.34.238.1";
+      interface = "eno1";
+    };
   };
 
   services.logind.lidSwitch = "lock";
