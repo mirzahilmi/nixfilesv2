@@ -1,7 +1,7 @@
 .PHONY: os
 os:
 	git add --all
-	nh os switch
+	nh os switch .
 
 .PHONY: home
 home:
