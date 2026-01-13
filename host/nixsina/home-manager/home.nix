@@ -12,5 +12,6 @@
     fastfetch
     gnumake
     neovim-git
+    zstd
   ];
 }
