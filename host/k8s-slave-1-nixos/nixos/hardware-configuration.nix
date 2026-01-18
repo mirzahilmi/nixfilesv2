@@ -1,7 +1,5 @@
 {
-  config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }: {
@@ -11,7 +9,16 @@
 
   boot.initrd.availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod"];
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["br_netfilter" "ip_conntrack" "ip_vs" "ip_vs_rr" "ip_vs_wrr" "ip_vs_sh" "overlay"];
+  boot.kernelModules = [
+    "br_netfilter"
+    "ip_conntrack"
+    "ip_vs"
+    "ip_vs_rr"
+    "ip_vs_wrr"
+    "ip_vs_sh"
+    "ip_vs_lc"
+    "overlay"
+  ];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {

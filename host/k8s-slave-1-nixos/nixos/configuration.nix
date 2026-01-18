@@ -1,5 +1,4 @@
 {
-  outputs,
   pkgs,
   config,
   ...
@@ -11,22 +10,12 @@
   networking.networkmanager.enable = true;
   system.stateVersion = "25.11"; # Did you read the comment?
 
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-    };
-  };
-
-  nix.settings = {
-    experimental-features = toString ["nix-command" "flakes"];
-  };
-
   time.timeZone = "Asia/Jakarta";
 
   environment.systemPackages = with pkgs; [
     git
     vim
+    ipvsadm
   ];
   services.openssh.enable = true;
 
@@ -61,7 +50,8 @@
       clientConnection = {
         kubeconfig = "/var/lib/rancher/k3s/agent/kubeproxy.kubeconfig";
       };
-      mode = "nftables";
+      mode = "ipvs";
+      ipvs.scheduler = "lc";
     };
   };
 

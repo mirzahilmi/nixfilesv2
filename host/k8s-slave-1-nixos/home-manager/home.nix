@@ -1,20 +1,6 @@
-{
-  outputs,
-  pkgs,
-  config,
-  ...
-}: {
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
-  };
-
+{pkgs, ...}: {
   home = {
     username = "member";
-    homeDirectory = "/home/${config.home.username}";
     stateVersion = "25.11";
   };
 
