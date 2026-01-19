@@ -14,6 +14,12 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
+  boot.kernel.sysctl = {
+    # see https://grafana.com/docs/k6/latest/testing-guides/running-large-tests/#os-fine-tuning
+    "net.ipv4.ip_local_port_range" = "1024 65535";
+    "net.ipv4.tcp_tw_reuse" = 1;
+    "net.ipv4.tcp_timestamps" = 1;
+  };
 
   fileSystems."/" = {
     device = secrets.disk-by-uuid.anuc.nixos;
