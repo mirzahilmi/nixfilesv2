@@ -12,6 +12,7 @@
     fastfetch
     gnumake
     neovim-git
+    nvtopPackages.nvidia
     zstd
   ];
 }

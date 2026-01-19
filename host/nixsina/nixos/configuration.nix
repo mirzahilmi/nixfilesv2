@@ -4,11 +4,24 @@
   secrets,
   ...
 }: {
+  nix.settings = {
+    substituters = [
+      "https://cache.nixos-cuda.org"
+    ];
+    trusted-public-keys = [
+      "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+    ];
+  };
+
   networking.hostName = "nixsina";
   system.stateVersion = "23.11";
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   programs = {
+    nix-ld = {
+      enable = true;
+      package = pkgs.systemPackages.nix-ld;
+    };
     nh = {
       enable = true;
       flake = "/home/${secrets.user.primary.username}/nixfilesv2";
@@ -115,4 +128,7 @@
   environment.sessionVariables.EDITOR = "nvim";
 
   services.xserver.videoDrivers = ["nvidia"];
+  services.tailscale.enable = true;
+  # see https://github.com/tailscale/tailscale/issues/4254#issuecomment-1075318898
+  services.resolved.enable = true;
 }
