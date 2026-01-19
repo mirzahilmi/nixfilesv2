@@ -6,6 +6,7 @@
 }: {
   programs = {
     lsd.enable = true;
+    bash.enable = true;
   };
 
   programs.btop = {
@@ -19,7 +20,7 @@
   programs.direnv = {
     enable = true;
     enableZshIntegration = false;
-    enableBashIntegration = false;
+    enableBashIntegration = true;
     enableFishIntegration = false;
     enableNushellIntegration = false;
     nix-direnv.enable = true;
