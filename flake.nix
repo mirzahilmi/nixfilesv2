@@ -11,6 +11,8 @@
     hardware.url = "github:nixos/nixos-hardware";
     nvim.url = "github:mirzahilmi/nvim";
     nixsecrets.url = "git+ssh://git@ssh.github.com:443/mirzahilmi/nixsecrets.git?ref=master&shallow=1";
+    # finger crossed, this will harden my system
+    nix-mineral.url = "github:cynicsketch/nix-mineral/v0.2.3-alpha";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -121,6 +123,7 @@
         modules = [
           inputs.hardware.nixosModules.lenovo-thinkpad-t480s
           inputs.nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
+          inputs.nix-mineral.nixosModules.nix-mineral
         ];
         args = {inherit secrets;};
       };
@@ -191,6 +194,12 @@
         path = ./devshell/python;
         welcomeText = ''
           Hello, Python!
+        '';
+      };
+      empty = {
+        path = ./devshell/empty;
+        welcomeText = ''
+          Hello, Void!
         '';
       };
     };
