@@ -3,15 +3,22 @@ if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
     exec tmux new-session -A -s ${USER} >/dev/null 2>&1
 fi
 
-alias v='nvim'
-alias mk='make'
-alias lg='lazygit'
-alias k9='k9s'
-alias k='kubectl'
+alias v="nvim"
+alias mk="make"
+alias lg="lazygit"
+alias k9="k9s"
+alias k="kubectl"
+alias y="yazi"
+alias vs="warp-cli status"
+alias vc="warp-cli connect"
+alias vd="warp-cli disconnect"
 
-export K9S_SKIN="transparent"
+setopt EXTENDED_GLOB
 
+K9S_SKIN="transparent"
 HISTFILE="${HOME}/.config/zsh/history"
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="([[:space:]]##*)"
+
 # see https://github.com/rothgar/mastering-zsh/blob/master/docs/config/history.md#configuration
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
@@ -27,7 +34,7 @@ setopt APPEND_HISTORY            # append to history file
 setopt HIST_NO_STORE             # Don't store history commands
 
 bindkey -e
-bindkey '^ ' autosuggest-accept
+bindkey "^ " autosuggest-accept
 
 # end profiling
 [[ -n "${ZSH_DEBUGRC+1}" ]] && zprof
