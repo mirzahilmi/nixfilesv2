@@ -9,24 +9,29 @@
     stateVersion = "23.11";
   };
 
+  fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     age
     anydesk
     bat
     burpsuite
     chafa
+    chromium
     dig
-    discord
     drawio
     eduvpn-client
     exiftool
     fd
     gnumake
+    hwinfo
     insomnia
+    inxi
     jetbrains.datagrip
+    kdePackages.kclock
     kind
     kubectl
     kubectl-explore
+    live-server
     lz4
     mermaid-cli
     minikube
@@ -37,18 +42,23 @@
     openssl
     postgresql
     postman
+    release-please
     rendercv
     slack
     sops
     ssh-to-age
+    systemPackages.inter
+    systemPackages.nerd-fonts.iosevka-term
+    teams-for-linux
     tokei
-    ungoogled-chromium
+    unstable.biome # fix https://github.com/biomejs/biome/issues/6623
     unzip
     usbutils
     vscode
     wget
     wireshark
     wl-clipboard
+    yazi
     zip
     zotero
     zstd
@@ -60,6 +70,9 @@
   xdg.configFile."oh-my-posh/config.json".source =
     config.lib.file.mkOutOfStoreSymlink
     "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/ohmyposh.json";
+  xdg.configFile."yazi/keymap.toml".source =
+    config.lib.file.mkOutOfStoreSymlink
+    "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/yazi_keymap.toml";
 
   xdg.mimeApps = {
     enable = true;
