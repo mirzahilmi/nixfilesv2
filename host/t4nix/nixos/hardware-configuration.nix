@@ -33,7 +33,10 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   boot.loader = {
-    systemd-boot.enable = true;
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 3;
+    };
     efi.canTouchEfiVariables = true;
   };
   services.xserver.xkb = {

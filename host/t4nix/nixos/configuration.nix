@@ -18,14 +18,6 @@
   time.timeZone = "Asia/Jakarta";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  fonts.packages = builtins.attrValues {
-    inherit (pkgs.systemPackages) inter;
-    inherit
-      (pkgs.systemPackages.nerd-fonts)
-      iosevka-term
-      ;
-  };
-
   console = {
     packages = [pkgs.systemPackages.terminus_font];
     earlySetup = true;
@@ -47,14 +39,15 @@
   services = {
     desktopManager.plasma6.enable = true;
     tailscale.enable = true;
-    displayManager.sddm = {
+    displayManager.gdm = {
       enable = true;
-      wayland.enable = true;
-      theme = "where_is_my_sddm_theme";
-      settings.General.DisplayServer = "wayland";
+      wayland = true; # explicit
     };
     cloudflare-warp.enable = true;
+    throttled.enable = true;
   };
+
+  # Fingerprint
   services."06cb-009a-fingerprint-sensor" = {
     enable = true;
     backend = "libfprint-tod";
@@ -77,32 +70,6 @@
 
   environment.systemPackages = with pkgs; [
     vim
-
-    (systemPackages.where-is-my-sddm-theme.override {
-      themeConfig.General = {
-        passwordCharacter = "*";
-        passwordMask = true;
-        passwordInputWidth = 0.5;
-        passwordInputBackground = "";
-        passwordInputRadius = "";
-        passwordInputCursorVisible = true;
-        passwordFontSize = 96;
-        passwordTextColor = "#0E0E10";
-        passwordCursorColor = "#0E0E10";
-        passwordAllowEmpty = true;
-
-        showSessionsByDefault = false;
-        sessionsFontSize = 24;
-        showUsersByDefault = false;
-        usersFontSize = 48;
-
-        background = "";
-        backgroundFill = "#F9F6EE";
-        backgroundFillMode = "aspect";
-        basicTextColor = "#0E0E10";
-        blurRadius = "";
-      };
-    })
   ];
 
   virtualisation.docker = {
@@ -112,4 +79,12 @@
   };
 
   environment.sessionVariables.EDITOR = "nvim";
+
+  nix-mineral = {
+    enable = true;
+    filesystems.normal = {
+      "/home".options.noexec = false;
+      "/tmp".options.noexec = false;
+    };
+  };
 }
