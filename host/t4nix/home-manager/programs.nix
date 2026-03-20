@@ -125,6 +125,9 @@ in {
       push.autoSetupRemote = true;
       push.default = "simple";
       rerere.enabled = true;
+      core.pager = "delta --navigate";
+      interactive.diffFilter = "delta --color-only";
+      delta.navigate = true;
 
       gpg.format = "ssh";
       # thanks to:
@@ -200,4 +203,9 @@ in {
   xdg.configFile."zsh/extra.zshrc".source =
     config.lib.file.mkOutOfStoreSymlink
     "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/.zshrc";
+
+  programs.opencode = {
+    enable = true;
+    package = pkgs.unstable.opencode;
+  };
 }
