@@ -50,8 +50,8 @@
       clientConnection = {
         kubeconfig = "/var/lib/rancher/k3s/agent/kubeproxy.kubeconfig";
       };
-      mode = "ipvs";
-      ipvs.scheduler = "lc";
+      mode = "nftables";
+      #ipvs.scheduler = "lc";
     };
   };
 
