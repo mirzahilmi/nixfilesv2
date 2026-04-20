@@ -14,6 +14,7 @@
     unstable = pull inputs.nixpkgs-unstable;
     systemPackages = pull inputs.nixpkgs-system;
     kdePackages = systemPackages.kdePackages;
+    guiPackages = pull inputs.nixpkgs-gui;
   };
 
   # see https://github.com/NixOS/nixpkgs/issues/126590#issuecomment-3194531220
