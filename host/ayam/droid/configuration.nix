@@ -8,7 +8,7 @@
     hostname
     k9s
     kubectl
-    neovim-git
+    neovim
     nmap
     openssh
     rsync
