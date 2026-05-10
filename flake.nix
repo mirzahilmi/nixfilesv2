@@ -12,8 +12,6 @@
     hardware.url = "github:nixos/nixos-hardware";
     nvim.url = "github:mirzahilmi/nvim";
     nixsecrets.url = "git+ssh://git@ssh.github.com:443/mirzahilmi/nixsecrets.git?ref=master&shallow=1";
-    # finger crossed, this will harden my system
-    nix-mineral.url = "github:cynicsketch/nix-mineral/v0.2.3-alpha";
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
 
     home-manager = {
@@ -121,9 +119,7 @@
         modules = [
           inputs.hardware.nixosModules.lenovo-thinkpad-t480s
           inputs.nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
-          inputs.nix-mineral.nixosModules.nix-mineral
           inputs.minegrub-theme.nixosModules.default
-          # "${inputs.nixpkgs-unstable}/nixos/modules/services/security/howdy"
         ];
         args = {inherit secrets;};
       };
