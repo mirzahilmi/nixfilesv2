@@ -5,9 +5,7 @@
   secrets,
   ...
 }: {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
@@ -19,7 +17,7 @@
     fsType = "ext4";
   };
 
-  fileSystems."/boot" = {
+  fileSystems."/boot/efi" = {
     device = secrets.disk-by-uuid.t4nix.boot;
     fsType = "vfat";
     options = ["fmask=0077" "dmask=0077"];
@@ -33,11 +31,23 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   boot.loader = {
-    systemd-boot = {
-      enable = true;
-      configurationLimit = 3;
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
     };
-    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      devices = ["nodev"];
+      efiSupport = true;
+      useOSProber = true;
+      configurationLimit = 5;
+      minegrub-theme = {
+        enable = true;
+        splash = "Lowkirkenuinely, i'm happy :)";
+        background = "background_options/1.19 - [The Wild Update].png";
+        boot-options-count = 4;
+      };
+    };
   };
   services.xserver.xkb = {
     layout = "us";

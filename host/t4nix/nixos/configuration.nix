@@ -27,11 +27,7 @@
 
   users.extraUsers."${secrets.user.primary.username}" = {
     isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "audio"
-      "docker"
-    ];
+    extraGroups = secrets.user.primary.groups;
     packages = [pkgs.systemPackages.home-manager];
     shell = pkgs.systemPackages.zsh;
   };
@@ -44,14 +40,48 @@
       wayland = true; # explicit
     };
     cloudflare-warp.enable = true;
-    throttled.enable = true;
   };
+  services.packagekit.enable = false;
+  environment.plasma6.excludePackages = with pkgs.systemPackages.kdePackages; [
+    discover
+    elisa
+  ];
 
   # Fingerprint
   services."06cb-009a-fingerprint-sensor" = {
     enable = true;
     backend = "libfprint-tod";
-    calib-data-file = "${builtins.toString inputs.nixsecrets}/${secrets.filepath.t4nix-fprint}";
+    calib-data-file = "${toString inputs.nixsecrets}/${secrets.filepath.t4nix-fprint}";
+  };
+  # systemd.services.fprintd.serviceConfig.ExecStartPre = "/usr/bin/env sleep 2";
+  # services.udev.extraRules = ''
+  #   ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="06cb", \
+  #   ATTR{idProduct}=="009a", TEST=="power/autosuspend", \
+  #   ATTR{power/autosuspend}="-1"
+  # '';
+
+  # services.howdy = {
+  #   enable = true;
+  #   package = pkgs.unstable.howdy;
+  #   control = "sufficient";
+  #   settings.video.device_path = "/dev/video0";
+  # };
+
+  services.throttled = {
+    enable = true;
+    extraConfig = ''
+      [UNDERVOLT]
+      # CPU core voltage offset (mV)
+      CORE: -105
+      # Integrated GPU voltage offset (mV)
+      GPU: -85
+      # CPU cache voltage offset (mV)
+      CACHE: -105
+      # System Agent voltage offset (mV)
+      UNCORE: -85
+      # Analog I/O voltage offset (mV)
+      ANALOGIO: 0
+    '';
   };
 
   programs = {
@@ -69,6 +99,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    neovim
     vim
   ];
 
@@ -76,15 +107,5 @@
     enable = true;
     enableOnBoot = false;
     autoPrune.enable = true;
-  };
-
-  environment.sessionVariables.EDITOR = "nvim";
-
-  nix-mineral = {
-    enable = true;
-    filesystems.normal = {
-      "/home".options.noexec = false;
-      "/tmp".options.noexec = false;
-    };
   };
 }

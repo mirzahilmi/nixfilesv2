@@ -15,8 +15,8 @@ keybind = ctrl+shift+o=unbind
 keybind = ctrl+enter=unbind
 keybind = f11=toggle_fullscreen
 
-background-image = ~/Downloads/T480s_Padgriffin.png
-background-image-opacity = 0.06
+background-image = ~/Downloads/wallhaven-3qqdg6_1920x1080.png
+background-image-opacity = 0.2
 background-image-fit = cover
 
 # # fresh ahh water
@@ -30,3 +30,4 @@ background-image-fit = cover
 # custom-shader = ~/.config/ghostty/shaders/tft.glsl
 
 custom-shader = ~/.config/ghostty/shaders/cursor_neovide.glsl
+

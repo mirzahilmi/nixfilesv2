@@ -5,29 +5,20 @@
   lib,
   secrets,
   ...
-}: let
-  spicetifyPkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in {
-  programs = {
-    librewolf.enable = true;
-    fastfetch.enable = true;
-    jq.enable = true;
-    ripgrep.enable = true;
-    lsd.enable = true;
-    tealdeer.enable = true;
-  };
-
+}: {
   services = {
     ssh-agent.enable = true;
   };
 
-  programs.k9s.enable = true;
-  xdg.configFile."k9s/skins/transparent.yaml".source =
-    config.lib.file.mkOutOfStoreSymlink
-    "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/k9s_transparent.yaml";
-
-  programs.spicetify = {
+  programs.spicetify = let
+    spicetifyPkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  in {
     enable = true;
+    # pin to pkgs.guiPackages.*
+    spicetifyPackage = pkgs.guiPackages.spicetify-cli;
+    spotifyPackage = pkgs.guiPackages.spotify;
+    spotifywmPackage = pkgs.guiPackages.spotifywm;
+
     enabledCustomApps = with spicetifyPkgs.apps; [
       betterLibrary
       historyInSidebar
@@ -45,22 +36,13 @@ in {
       volumePercentage
     ];
   };
-  programs.ghostty = {
-    enable = true;
-    package = pkgs.unstable.ghostty;
-  };
-  xdg.configFile."ghostty/shaders" = {
-    recursive = true;
-    source =
-      config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/ghostty_shaders";
-  };
 
   programs.obs-studio = {
     enable = true;
+    package = pkgs.guiPackages.obs-studio;
     plugins = builtins.attrValues {
       inherit
-        (pkgs.obs-studio-plugins)
+        (pkgs.guiPackages.obs-studio-plugins)
         wlrobs
         input-overlay
         obs-backgroundremoval
@@ -68,13 +50,7 @@ in {
         ;
     };
   };
-  programs.btop = {
-    enable = true;
-    settings = {
-      theme_background = false;
-      proc_sorting = "memory";
-    };
-  };
+
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
@@ -96,6 +72,7 @@ in {
       }
     '';
   };
+
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
@@ -103,6 +80,7 @@ in {
     enableFishIntegration = false;
     defaultOptions = ["--layout=reverse --info=inline --height=90%"];
   };
+
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -128,6 +106,7 @@ in {
       core.pager = "delta --navigate";
       interactive.diffFilter = "delta --color-only";
       delta.navigate = true;
+      delta.line-numbers = true;
 
       gpg.format = "ssh";
       # thanks to:
@@ -138,30 +117,15 @@ in {
       user.signingkey = "~/.ssh/id_ed25519.pub";
     };
   };
-  programs.lazygit = {
-    enable = true;
-    enableZshIntegration = false;
-    settings = {
-      git = {
-        pagers = [
-          {
-            pager = "delta --dark --paging=never";
-            colorArg = "always";
-          }
-        ];
-      };
-    };
-  };
-  programs.delta = {
-    enable = true;
-    options = {
-      line-numbers = true;
-    };
-  };
+
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks."*".addKeysToAgent = "12h";
+    matchBlocks =
+      {
+        "*".addKeysToAgent = "12h";
+      }
+      // secrets.ssh;
   };
 
   programs.tmux = {
@@ -169,7 +133,7 @@ in {
     secureSocket = true;
     extraConfig = "source-file ${config.xdg.configHome}/tmux/extra.conf";
     plugins = builtins.attrValues {
-      inherit (pkgs.tmuxPlugins) fingers;
+      inherit (pkgs.unstable.tmuxPlugins) fingers;
     };
   };
   xdg.configFile."tmux/extra.conf".source =
@@ -203,9 +167,4 @@ in {
   xdg.configFile."zsh/extra.zshrc".source =
     config.lib.file.mkOutOfStoreSymlink
     "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/.zshrc";
-
-  programs.opencode = {
-    enable = true;
-    package = pkgs.unstable.opencode;
-  };
 }

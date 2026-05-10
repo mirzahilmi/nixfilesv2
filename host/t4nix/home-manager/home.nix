@@ -12,56 +12,77 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     age
-    anydesk
+    android-tools
     bat
-    burpsuite
+    btop
     chafa
-    chromium
+    delta
     dig
-    drawio
+    dive
     eduvpn-client
     exiftool
+    fastfetch
     fd
     gnumake
     hwinfo
-    insomnia
     inxi
-    jetbrains.datagrip
-    kdePackages.kclock
+    jq
+    k9s
     kind
     kubectl
     kubectl-explore
+    lazygit
+    libmbim
     live-server
+    lsd
     lz4
     mermaid-cli
-    minikube
+    mitmproxy
     neovim
     nmap
-    obsidian
     open-github
     openssl
-    postgresql
-    postman
+    pciutils
     release-please
-    rendercv
-    slack
+    ripgrep
     sops
     ssh-to-age
-    systemPackages.inter
-    systemPackages.nerd-fonts.iosevka-term
-    teams-for-linux
+    tealdeer
     tokei
-    unstable.biome # fix https://github.com/biomejs/biome/issues/6623
     unzip
     usbutils
-    vscode
     wget
-    wireshark
     wl-clipboard
     yazi
     zip
-    zotero
     zstd
+
+    guiPackages.bitwarden-desktop
+    guiPackages.chromium
+    guiPackages.discord
+    guiPackages.drawio
+    guiPackages.ghostty
+    guiPackages.insomnia
+    guiPackages.jetbrains.datagrip
+    guiPackages.kdePackages.kclock
+    guiPackages.libreoffice-qt
+    guiPackages.librewolf
+    guiPackages.obsidian
+    guiPackages.postman
+    guiPackages.slack
+    guiPackages.vscode
+    guiPackages.wireshark
+    guiPackages.zotero
+
+    systemPackages.inter
+    systemPackages.nerd-fonts.iosevka-term
+    systemPackages.nerd-fonts.lilex
+
+    unstable.biome # fix https://github.com/biomejs/biome/issues/6623
+    unstable.claude-code
+    unstable.opencode
+    unstable.rendercv
+    unstable.rtk
   ];
 
   xdg.configFile."ghostty/config".source =
@@ -73,6 +94,22 @@
   xdg.configFile."yazi/keymap.toml".source =
     config.lib.file.mkOutOfStoreSymlink
     "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/yazi_keymap.toml";
+  xdg.configFile."btop/btop.conf".source =
+    config.lib.file.mkOutOfStoreSymlink
+    "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/btop.conf";
+  xdg.configFile."lazygit/config.yml".source =
+    config.lib.file.mkOutOfStoreSymlink
+    "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/lazygit.yaml";
+  xdg.configFile."k9s/skins/transparent.yaml".source =
+    config.lib.file.mkOutOfStoreSymlink
+    "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/k9s_transparent.yaml";
+
+  xdg.configFile."ghostty/shaders" = {
+    recursive = true;
+    source =
+      config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/ghostty_shaders";
+  };
 
   xdg.mimeApps = {
     enable = true;
@@ -93,7 +130,5 @@
     };
   };
 
-  dconf.settings = {
-    "org/gnome/desktop/interface".color-scheme = "prefer-dark";
-  };
+  dconf.settings = {"org/gnome/desktop/interface".color-scheme = "prefer-dark";};
 }
