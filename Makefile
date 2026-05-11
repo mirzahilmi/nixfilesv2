@@ -12,3 +12,7 @@ home:
 nvim:
 	nix flake update nvim
 	nh home switch . --configuration $(shell hostname)@$(shell hostname)
+
+.PHONY: fetchsecret
+fetchsecret:
+	nix flake update nixsecrets

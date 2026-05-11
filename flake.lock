@@ -309,17 +309,15 @@
       "locked": {
         "lastModified": 1777691561,
         "narHash": "sha256-jM1K91NetOrtrCN0mlvDszhA77ZkdGzg8nmGqw5m+KE=",
-        "ref": "master",
+        "owner": "mirzahilmi",
+        "repo": "nixsecrets",
         "rev": "75d66cb3ffd296facd168ed5197c9510023ca165",
-        "shallow": true,
-        "type": "git",
-        "url": "ssh://git@ssh.github.com:443/mirzahilmi/nixsecrets.git"
+        "type": "github"
       },
       "original": {
-        "ref": "master",
-        "shallow": true,
-        "type": "git",
-        "url": "ssh://git@ssh.github.com:443/mirzahilmi/nixsecrets.git"
+        "owner": "mirzahilmi",
+        "repo": "nixsecrets",
+        "type": "github"
       }
     },
     "nmd": {

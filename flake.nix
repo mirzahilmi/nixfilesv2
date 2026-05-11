@@ -11,7 +11,7 @@
 
     hardware.url = "github:nixos/nixos-hardware";
     nvim.url = "github:mirzahilmi/nvim";
-    nixsecrets.url = "git+ssh://git@ssh.github.com:443/mirzahilmi/nixsecrets.git?ref=master&shallow=1";
+    nixsecrets.url = "github:mirzahilmi/nixsecrets";
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
 
     home-manager = {
