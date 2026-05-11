@@ -108,4 +108,8 @@
     enableOnBoot = false;
     autoPrune.enable = true;
   };
+
+  # NOTE:
+  # fix WiFi-UB.x can't connect
+  # nmcli connection modify WiFi-UB.x 802-1x.phase1-auth-flags 32
 }
