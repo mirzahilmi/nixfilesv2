@@ -8,6 +8,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-24_05.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-25_05.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     hardware.url = "github:nixos/nixos-hardware";
     nvim.url = "github:mirzahilmi/nvim";
@@ -68,7 +69,6 @@
       };
 
     mkHome = {
-      username,
       hostname,
       system,
       modules ? [],
@@ -84,7 +84,7 @@
           args
           // {
             inherit inputs outputs libx;
-            current = {inherit username hostname;};
+            current = {inherit hostname;};
             osConfig = outputs.nixosConfigurations.${hostname}.config;
           };
       };
@@ -140,12 +140,19 @@
         ];
         args = {inherit secrets;};
       };
+      t6dweasel = mkSystem {
+        hostname = "t6dweasel";
+        system = x86;
+        modules = [
+          inputs.nixos-wsl.nixosModules.default
+        ];
+        args = {inherit secrets;};
+      };
     };
 
     homeConfigurations = {
       "t4nix@t4nix" = mkHome {
         system = x86;
-        username = secrets.user.primary.username;
         hostname = "t4nix";
         modules = [
           inputs.spicetify-nix.homeManagerModules.default
@@ -154,19 +161,21 @@
       };
       "member@k8s-slave-1-nixos" = mkHome {
         system = x86;
-        username = "member";
         hostname = "k8s-slave-1-nixos";
       };
       "anuc@anuc" = mkHome {
         system = x86;
-        username = secrets.user.secondary.username;
         hostname = "anuc";
         args = {inherit secrets;};
       };
       "nixsina@nixsina" = mkHome {
         system = x86;
-        username = secrets.user.primary.username;
         hostname = "nixsina";
+        args = {inherit secrets;};
+      };
+      "t6dweasel@t6dweasel" = mkHome {
+        system = x86;
+        hostname = "t6dweasel";
         args = {inherit secrets;};
       };
     };
