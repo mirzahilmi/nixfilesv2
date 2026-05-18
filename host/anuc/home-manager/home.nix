@@ -9,14 +9,14 @@
   };
 
   home.packages = with pkgs; [
-    neovim-git
-    k6
     btop
     fastfetch
+    gnumake
+    k6
     lz4
+    neovim
     nmap
     zstd
-    gnumake
   ];
 
   programs.tmux = {

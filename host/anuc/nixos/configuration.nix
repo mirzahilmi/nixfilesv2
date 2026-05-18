@@ -31,7 +31,10 @@
       "networkmanager"
       "docker"
     ];
-    packages = [pkgs.systemPackages.home-manager];
+    packages = with pkgs; [
+      fd
+      systemPackages.home-manager
+    ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -62,13 +65,23 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  services.openssh.enable = true;
   services.tailscale.enable = true;
+  services.openssh = {
+    enable = true;
+    ports = secrets.ssh.anuc.port;
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+      AllowUsers = [secrets.user.secondary.username];
+    };
+  };
 
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
-    autoPrune.enable = true;
+    # causing dissapering container
+    # autoPrune.enable = true;
   };
 
   system.stateVersion = "25.11";
