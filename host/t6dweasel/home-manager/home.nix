@@ -10,7 +10,9 @@
 
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
+    bat
     fd
+    fzf
     lazygit
     lsd
     neovim
