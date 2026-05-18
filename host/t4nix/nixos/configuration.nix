@@ -68,7 +68,7 @@
   # };
 
   services.throttled = {
-    enable = true;
+    enable = false;
     # copied over from https://github.com/erpalma/throttled/blob/master/etc/throttled.conf
     # with replaced section from https://github.com/erpalma/throttled#configuration
     extraConfig = ''

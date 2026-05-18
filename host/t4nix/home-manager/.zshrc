@@ -5,19 +5,23 @@ fi
 
 fpath+=($ZDOTDIR/completions) # add ~/.config/zsh/completions as one of completion sources
 
-alias v="nvim"
-alias mk="make"
-alias lg="lazygit"
-alias k9="k9s"
-alias k="kubectl"
-alias y="yazi"
-alias vs="warp-cli status"
-alias vc="warp-cli connect"
-alias vd="warp-cli disconnect"
 alias ga="git add -A"
 alias gc="git commit -m"
 alias gp="git push"
 alias gs="git status"
+alias k9="k9s"
+alias k="kubectl"
+alias l="lsd -lAh"
+alias lg="lazygit"
+alias ls="lsd"
+alias mk="make"
+alias off="systemctl poweroff"
+alias restart="systemctl reboot"
+alias v="nvim"
+alias vc="warp-cli connect"
+alias vd="warp-cli disconnect"
+alias vs="warp-cli status"
+alias y="yazi"
 
 EDITOR="nvim" # set default text editor to neovim
 K9S_SKIN="transparent" # set k9s background to transparent

@@ -62,12 +62,14 @@
     guiPackages.discord
     guiPackages.drawio
     guiPackages.ghostty
+    guiPackages.haruna
     guiPackages.insomnia
     guiPackages.jetbrains.datagrip
     guiPackages.kdePackages.kclock
     guiPackages.libreoffice-qt
     guiPackages.librewolf
     guiPackages.obsidian
+    guiPackages.parabolic
     guiPackages.postman
     guiPackages.slack
     guiPackages.vscode
