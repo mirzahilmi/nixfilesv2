@@ -98,9 +98,9 @@
       plugins = [
         "mattmc3/ez-compinit"
         "zsh-users/zsh-completions kind:fpath path:src"
-        "belak/zsh-utils path:editor"
-        "zsh-users/zsh-autosuggestions kind:defer"
         "zdharma-continuum/fast-syntax-highlighting kind:defer"
+        "zsh-users/zsh-autosuggestions kind:defer"
+        "zsh-users/zsh-history-substring-search kind:defer"
         "Aloxaf/fzf-tab kind:defer"
       ];
     };

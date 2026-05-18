@@ -78,6 +78,9 @@ alias -- -='cd -'  # prevents - being parsed as a flag; cd - jumps to previous d
 # keybinding
 bindkey -e # set text edit mode to emacs (default zsh)
 bindkey "^ " autosuggest-accept # Ctrl + Space to accept suggestion
+# zsh-history-substring-search keybindings
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 [[ -n "${ZSH_DEBUGRC+1}" ]] && zprof # end profiling
 
