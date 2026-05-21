@@ -189,6 +189,12 @@
 
     # templates are modified version of https://github.com/the-nix-way/dev-templates
     templates = {
+      empty = {
+        path = ./devshell/empty;
+        welcomeText = ''
+          Hello, Void!
+        '';
+      };
       go = {
         path = ./devshell/go;
         welcomeText = ''
@@ -201,10 +207,10 @@
           Hello, Python!
         '';
       };
-      empty = {
-        path = ./devshell/empty;
+      typescript = {
+        path = ./devshell/typescript;
         welcomeText = ''
-          Hello, Void!
+          Hello, TypeScript!
         '';
       };
     };
