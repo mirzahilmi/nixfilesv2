@@ -23,6 +23,7 @@
     exiftool
     fastfetch
     fd
+    fzf
     gnumake
     hwinfo
     inxi

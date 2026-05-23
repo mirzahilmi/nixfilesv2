@@ -73,14 +73,6 @@
     '';
   };
 
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-    enableBashIntegration = false;
-    enableFishIntegration = false;
-    defaultOptions = ["--layout=reverse --info=inline --height=90%"];
-  };
-
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -150,16 +142,21 @@
       plugins = [
         "mattmc3/ez-compinit"
         "zsh-users/zsh-completions kind:fpath path:src"
-        "belak/zsh-utils path:editor"
-        "zsh-users/zsh-autosuggestions kind:defer"
         "zdharma-continuum/fast-syntax-highlighting kind:defer"
+        "zsh-users/zsh-autosuggestions kind:defer"
+        "zsh-users/zsh-history-substring-search kind:defer"
         "Aloxaf/fzf-tab kind:defer"
       ];
     };
     initContent = ''
       # start profiling
       [[ -n "''${ZSH_DEBUGRC+1}" ]] && zmodload zsh/zprof
+
       eval "$(${lib.getExe pkgs.oh-my-posh} init zsh --config ${config.xdg.configHome}/oh-my-posh/config.json)"
+
+      # source fzf extension (Ctrl-R for example)
+      source ${pkgs.fzf}/share/fzf/key-bindings.zsh
+      source ${pkgs.fzf}/share/fzf/completion.zsh
 
       source ${config.xdg.configHome}/zsh/extra.zshrc
     '';
