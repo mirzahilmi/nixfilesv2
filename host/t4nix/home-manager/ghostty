@@ -3,6 +3,7 @@ cursor-invert-fg-bg = true
 cursor-style-blink = false
 font-family = IosevkaTerm NF
 font-size = 13
+font-feature = -calt, -liga, -dlig
 mouse-hide-while-typing = true
 theme = Dark+
 gtk-titlebar-hide-when-maximized = true

@@ -68,9 +68,10 @@
   # };
 
   services.throttled = {
-    enable = false;
+    enable = true;
     # copied over from https://github.com/erpalma/throttled/blob/master/etc/throttled.conf
-    # with replaced section from https://github.com/erpalma/throttled#configuration
+    # with replaced [UNDERVOLT] section originally from https://github.com/erpalma/throttled#configuration
+    # but now uses value from https://www.reddit.com/r/thinkpad/comments/12ybvxz/comment/jhnwjy3
     extraConfig = ''
       [GENERAL]
       # Enable or disable the script execution
@@ -123,13 +124,13 @@
 
       [UNDERVOLT]
       # CPU core voltage offset (mV)
-      CORE: -105
+      CORE: -100
       # Integrated GPU voltage offset (mV)
       GPU: -85
       # CPU cache voltage offset (mV)
-      CACHE: -105
+      CACHE: -50
       # System Agent voltage offset (mV)
-      UNCORE: -85
+      UNCORE: -50
       # Analog I/O voltage offset (mV)
       ANALOGIO: 0
 
