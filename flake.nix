@@ -148,6 +148,14 @@
         ];
         args = {inherit secrets;};
       };
+      carefull = mkSystem {
+        hostname = "carefull";
+        system = x86;
+        modules = [
+          inputs.nixos-wsl.nixosModules.default
+        ];
+        args = {inherit secrets;};
+      };
     };
 
     homeConfigurations = {
@@ -176,6 +184,11 @@
       "t6dweasel@t6dweasel" = mkHome {
         system = x86;
         hostname = "t6dweasel";
+        args = {inherit secrets;};
+      };
+      "carefull@carefull" = mkHome {
+        system = x86;
+        hostname = "carefull";
         args = {inherit secrets;};
       };
     };
