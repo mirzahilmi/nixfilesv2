@@ -140,12 +140,13 @@
       enable = true;
       useFriendlyNames = true;
       plugins = [
-        "mattmc3/ez-compinit"
-        "zsh-users/zsh-completions kind:fpath path:src"
+        "mattmc3/ez-compinit" # sane compinit
+        "zsh-users/zsh-completions kind:fpath path:src" # common collection of completion
         "zdharma-continuum/fast-syntax-highlighting kind:defer"
-        "zsh-users/zsh-autosuggestions kind:defer"
-        "zsh-users/zsh-history-substring-search kind:defer"
-        "Aloxaf/fzf-tab kind:defer"
+        "zsh-users/zsh-autosuggestions kind:defer" # completion suggestion when typing
+        "zsh-users/zsh-history-substring-search kind:defer" # up-down history search based on the prompt as prefix
+        "Aloxaf/fzf-tab kind:defer" # completion entries fzf style
+        "belak/zsh-utils path:editor" # Ctrl-Left Ctrl-Right word by word movement
       ];
     };
     initContent = ''
