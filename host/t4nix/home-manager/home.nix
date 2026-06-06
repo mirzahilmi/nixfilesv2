@@ -54,8 +54,8 @@
     usbutils
     wget
     wl-clipboard
-    yazi
     zip
+    zoxide
     zstd
 
     guiPackages.bitwarden-desktop
@@ -94,9 +94,6 @@
   xdg.configFile."oh-my-posh/config.json".source =
     config.lib.file.mkOutOfStoreSymlink
     "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/ohmyposh.json";
-  xdg.configFile."yazi/keymap.toml".source =
-    config.lib.file.mkOutOfStoreSymlink
-    "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/yazi_keymap.toml";
   xdg.configFile."btop/btop.conf".source =
     config.lib.file.mkOutOfStoreSymlink
     "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/btop.conf";

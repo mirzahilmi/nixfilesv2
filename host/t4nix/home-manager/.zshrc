@@ -10,6 +10,9 @@ fi
 fpath+=($ZDOTDIR/completions) # add ~/.config/zsh/completions as one of completion sources
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # lowercase completion input matches upper and lower
 
+# zoxide integration
+eval "$(zoxide init zsh)"
+
 HISTFILE="${HOME}/.config/zsh/history" # place command history file at ~/.config/zsh/history
 HISTSIZE=100000
 SAVEHIST=100000
@@ -65,7 +68,6 @@ alias ls="lsd"
 alias lg="lazygit"
 alias k9="k9s"
 alias k="kubectl"
-alias y="yazi"
 alias vs="warp-cli status"
 alias vc="warp-cli connect"
 alias vd="warp-cli disconnect"

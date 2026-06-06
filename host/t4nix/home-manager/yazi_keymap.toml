@@ -1,4 +1,0 @@
-[[mgr.prepend_keymap]]
-on = [" "]
-run = "toggle"
-desc = "Toggle selection without moving cursor"
