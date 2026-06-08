@@ -8,17 +8,16 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-24_05.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-25_05.url = "github:nixos/nixpkgs/nixos-25.05";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nixpkgs-26_05.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/release-26.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager-26_05.url = "github:nix-community/home-manager/release-26.05";
 
     hardware.url = "github:nixos/nixos-hardware";
     nvim.url = "github:mirzahilmi/nvim";
     nixsecrets.url = "github:mirzahilmi/nixsecrets";
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
 
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -54,6 +53,7 @@
     secrets = inputs.nixsecrets.secrets;
 
     mkSystem = {
+      nixpkgs ? nixpkgs,
       hostname,
       system,
       modules ? [],
@@ -69,6 +69,8 @@
       };
 
     mkHome = {
+      nixpkgs ? nixpkgs,
+      home-manager ? home-manager,
       hostname,
       system,
       modules ? [],
@@ -149,6 +151,7 @@
         args = {inherit secrets;};
       };
       carefull = mkSystem {
+        nixpkgs = inputs.nixpkgs-26_05;
         hostname = "carefull";
         system = x86;
         modules = [
@@ -187,6 +190,8 @@
         args = {inherit secrets;};
       };
       "carefull@carefull" = mkHome {
+        nixpkgs = inputs.nixpkgs-26_05;
+        home-manager = inputs.home-manager-26_05;
         system = x86;
         hostname = "carefull";
         args = {inherit secrets;};
