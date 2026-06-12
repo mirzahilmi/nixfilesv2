@@ -5,10 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-system.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-gui.url = "github:nixos/nixpkgs/nixos-25.11";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-24_05.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-25_05.url = "github:nixos/nixpkgs/nixos-25.05";
-    nixpkgs-25_11.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-25_11.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-26_05.url = "github:nixos/nixpkgs/nixos-26.05";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/release-26.05";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
@@ -37,24 +38,19 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
+  outputs = {self, ...} @ inputs: let
     inherit (self) outputs;
     x86 = "x86_64-linux";
     aarch64 = "aarch64-linux";
 
     overlays = import ./overlay.nix {inherit inputs;};
     libx = import ./lib.nix {
-      lib = nixpkgs.lib // home-manager.lib;
+      lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
     };
     secrets = inputs.nixsecrets.secrets;
 
     mkSystem = {
-      nixpkgs ? nixpkgs,
+      nixpkgs ? inputs.nixpkgs,
       hostname,
       system,
       modules ? [],
@@ -70,8 +66,8 @@
       };
 
     mkHome = {
-      nixpkgs ? nixpkgs,
-      home-manager ? home-manager,
+      nixpkgs ? inputs.nixpkgs,
+      home-manager ? inputs.home-manager,
       hostname,
       system,
       modules ? [],
@@ -99,6 +95,7 @@
       args ? {},
     }:
       inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+        # uses nixpkgs 24.05 bcs latest nix-on-droid are still in 24.05
         pkgs = import inputs.nixpkgs-24_05 {
           inherit system;
           overlays = builtins.attrValues outputs.overlays;
@@ -144,10 +141,12 @@
         args = {inherit secrets;};
       };
       t6dweasel = mkSystem {
+        nixpkgs = inputs.nixpkgs-26_05;
         hostname = "t6dweasel";
         system = x86;
         modules = [
           inputs.nixos-wsl.nixosModules.default
+          inputs.determinate.nixosModules.default
         ];
         args = {inherit secrets;};
       };
@@ -186,6 +185,8 @@
         args = {inherit secrets;};
       };
       "t6dweasel@t6dweasel" = mkHome {
+        nixpkgs = inputs.nixpkgs-26_05;
+        home-manager = inputs.home-manager-26_05;
         system = x86;
         hostname = "t6dweasel";
         args = {inherit secrets;};
