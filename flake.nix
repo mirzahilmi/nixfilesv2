@@ -17,7 +17,7 @@
 
     hardware.url = "github:nixos/nixos-hardware";
     nvim.url = "github:mirzahilmi/nvim";
-    nixsecrets.url = "github:mirzahilmi/nixsecrets";
+    nixsecrets.url = "git+ssh://git@github.com/mirzahilmi/nixsecrets";
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
 
     spicetify-nix = {
