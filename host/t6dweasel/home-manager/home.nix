@@ -11,12 +11,19 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     bat
+    btop
+    claude-code
+    fastfetch
     fd
     fzf
     lazygit
     lsd
     neovim
     ripgrep
+    xdg-open
+    zoxide
+
+    unstable.rtk
   ];
 
   xdg.configFile."oh-my-posh/config.json".source =

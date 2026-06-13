@@ -10,6 +10,9 @@ fi
 fpath+=($ZDOTDIR/completions) # add ~/.config/zsh/completions as one of completion sources
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # lowercase completion input matches upper and lower
 
+# zoxide integration
+eval "$(zoxide init zsh)"
+
 HISTFILE="${HOME}/.config/zsh/history" # place command history file at ~/.config/zsh/history
 HISTSIZE=100000
 SAVEHIST=100000
@@ -29,17 +32,19 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
 setopt SHARE_HISTORY             # Share history between all sessions.
 
-setopt AUTOCD # cd without cd, e.x. cd Documents -> Documents
+# i use zoxide now
+# setopt AUTOCD # cd without cd, e.x. cd Documents -> Documents
 setopt NOBEEP
 setopt NUMERIC_GLOB_SORT  # sort file10 after file9, not after file1
 
 export EDITOR="nvim" # set default text editor to neovim
 export VISUAL="nvim" # set default text editor to neovim
+export BROWSER="xdg-open"
 export K9S_SKIN="transparent" # set k9s background to transparent
 export MANPAGER="bat -l man -p" # use bat as man pager
 
 # auto generated from pnpm setup
-export PNPM_HOME="/home/mirza/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -55,32 +60,28 @@ export FZF_DEFAULT_OPTS='
   --preview-window=right:65%:wrap:border-left
 '
 export _FZF_PREVIEW_CMD='bat --color=always --style=plain,numbers --line-range=:500 {}' # fzf preview
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND" # Ctrl-T uses fd
-export FZF_CTRL_T_OPTS="--preview '$_FZF_PREVIEW_CMD'" # Ctrl-T preview use bat
+# currently doesn't use these, can't afford to delete bcs im lazy to search it up again when i DO need it
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND" # Ctrl-T uses fd
+# export FZF_CTRL_T_OPTS="--preview '$_FZF_PREVIEW_CMD'" # Ctrl-T preview use bat
 
-alias v="nvim"
-alias mk="make"
-alias l="lsd -lAh"
-alias ls="lsd"
-alias lg="lazygit"
-alias k9="k9s"
-alias k="kubectl"
-alias y="yazi"
-alias vs="warp-cli status"
-alias vc="warp-cli connect"
-alias vd="warp-cli disconnect"
+alias cc="claude"
 alias ga="git add -A"
 alias gc="git commit -m"
 alias gp="git push"
 alias gs="git status"
-alias -- -='cd -'  # prevents - being parsed as a flag; cd - jumps to previous directory
+alias l="lsd -lAh"
+alias lg="lazygit"
+alias ls="lsd"
+alias mk="make"
+alias open="$BROWSER"
+alias v="nvim"
 
 # keybinding
 bindkey -e # set text edit mode to emacs (default zsh)
 bindkey "^ " autosuggest-accept # Ctrl + Space to accept suggestion
 # zsh-history-substring-search keybindings
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
 
 [[ -n "${ZSH_DEBUGRC+1}" ]] && zprof # end profiling
 
