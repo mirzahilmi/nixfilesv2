@@ -31,10 +31,10 @@
     mitmproxy
     mermaid-cli
     neovim
+    open-github
     openssl
     postgresql # andai waktu bisa ngasih psql & pgbench doang
     ripgrep
-    wslu
     xdg-open
     zoxide
     zstd
