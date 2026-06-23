@@ -10,13 +10,36 @@
 
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
+    awscli2
     bat
+    btop
+    claude-code
+    delta
+    dig
+    fastfetch
     fd
     fzf
+    gh
+    jq
+    k9s
+    kubectl
+    kubectl-explore
+    lazydocker
     lazygit
     lsd
+    lz4
+    mitmproxy
+    mermaid-cli
     neovim
+    openssl
+    postgresql # andai waktu bisa ngasih psql & pgbench doang
     ripgrep
+    wslu
+    xdg-open
+    zoxide
+    zstd
+
+    unstable.rtk
   ];
 
   xdg.configFile."oh-my-posh/config.json".source =

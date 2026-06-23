@@ -156,6 +156,7 @@
         system = x86;
         modules = [
           inputs.nixos-wsl.nixosModules.default
+          inputs.determinate.nixosModules.default
         ];
         args = {inherit secrets;};
       };

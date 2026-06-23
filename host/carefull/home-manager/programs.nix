@@ -28,47 +28,49 @@
     '';
   };
 
-  # programs.git = {
-  #   enable = true;
-  #   lfs.enable = true;
-  #   ignores = ["*.env" "*.env.json" "*.env.yaml" ".envrc"];
-  #   settings = {
-  #     user = {
-  #       name = "mirzaganteng";
-  #       email = secrets.email.dev;
-  #     };
-  #     alias = {
-  #       a = "add --all";
-  #       graph = "log --decorate --oneline --graph";
-  #     };
-  #     branch.sort = "committerdate";
-  #     column.ui = "auto";
-  #     commit.verbose = true;
-  #     init.defaultBranch = "master";
-  #     merge.conflictStyle = "zdiff3";
-  #     pull.rebase = true;
-  #     push.autoSetupRemote = true;
-  #     push.default = "simple";
-  #     rerere.enabled = true;
-  #     core.pager = "delta --navigate";
-  #     interactive.diffFilter = "delta --color-only";
-  #     delta.navigate = true;
-  #     delta.line-numbers = true;
-  #
-  #     gpg.format = "ssh";
-  #     # thanks to:
-  #     # https://www.reddit.com/r/git/comments/1coropv/comment/l3jeblh
-  #     # https://www.reddit.com/r/git/comments/1coropv/comment/mdoiau0
-  #     gpg.ssh.program = "${pkgs.ssh-sign-me-up}/bin/ssh-sign-me-up";
-  #     commit.gpgSign = true;
-  #     user.signingkey = "~/.ssh/id_ed25519.pub";
-  #   };
-  # };
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+    ignores = ["*.env" "*.env.json" "*.env.yaml" ".envrc"];
+    settings = {
+      user = {
+        name = "Mirza Hilmi";
+        email = "mirza.hilmi@evidence.care";
+      };
+      alias = {
+        a = "add --all";
+        graph = "log --decorate --oneline --graph";
+      };
+      branch.sort = "committerdate";
+      column.ui = "auto";
+      commit.verbose = true;
+      init.defaultBranch = "master";
+      pull.rebase = true;
+      push.autoSetupRemote = true;
+      push.default = "simple";
+      rerere.enabled = true;
+
+      gpg.format = "ssh";
+      # thanks to:
+      # https://www.reddit.com/r/git/comments/1coropv/comment/l3jeblh
+      # https://www.reddit.com/r/git/comments/1coropv/comment/mdoiau0
+      gpg.ssh.program = "${pkgs.ssh-sign-me-up}/bin/ssh-sign-me-up";
+      commit.gpgSign = true;
+      user.signingkey = "~/.ssh/id_ed25519.pub";
+
+      # delta pager integration
+      core.pager = "delta";
+      interactive.diffFilter = "delta --color-only";
+      delta.navigate = true;
+      delta.dark = true;
+      merge.conflictStyle = "zdiff3";
+    };
+  };
 
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "*".addKeysToAgent = "12h";
     };
   };
@@ -99,6 +101,7 @@
         "zsh-users/zsh-autosuggestions kind:defer"
         "zsh-users/zsh-history-substring-search kind:defer"
         "Aloxaf/fzf-tab kind:defer"
+        "belak/zsh-utils path:editor"
       ];
     };
     initContent = ''
