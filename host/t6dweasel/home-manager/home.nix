@@ -29,4 +29,7 @@
   xdg.configFile."oh-my-posh/config.json".source =
     config.lib.file.mkOutOfStoreSymlink
     "${config.home.homeDirectory}/nixfilesv2/host/t6dweasel/home-manager/ohmyposh.json";
+  xdg.configFile."lazygit/config.yml".source =
+    config.lib.file.mkOutOfStoreSymlink
+    "${config.home.homeDirectory}/nixfilesv2/host/t6dweasel/home-manager/lazygit.yaml";
 }
