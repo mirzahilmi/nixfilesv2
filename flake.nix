@@ -17,7 +17,7 @@
 
     hardware.url = "github:nixos/nixos-hardware";
     nvim.url = "github:mirzahilmi/nvim";
-    nixsecrets.url = "git+ssh://git@github.com/mirzahilmi/nixsecrets";
+    nixsecrets.url = "git+ssh://git@ssh.github.com:443/mirzahilmi/nixsecrets";
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
 
     spicetify-nix = {
@@ -114,6 +114,7 @@
 
     nixosConfigurations = {
       t4nix = mkSystem {
+        nixpkgs = inputs.nixpkgs-26_05;
         hostname = "t4nix";
         system = x86;
         modules = [
@@ -164,6 +165,8 @@
 
     homeConfigurations = {
       "t4nix@t4nix" = mkHome {
+        nixpkgs = inputs.nixpkgs-26_05;
+        home-manager = inputs.home-manager-26_05;
         system = x86;
         hostname = "t4nix";
         modules = [
