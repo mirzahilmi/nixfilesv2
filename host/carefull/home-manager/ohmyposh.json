@@ -2,7 +2,7 @@
   "version": 3,
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "transient_prompt": {
-    "template": "[{{ now | date \"15:04:05\" }}] {{ .PWD }} > ",
+    "template": "[{{ now | date \"15:04:05\" }}] {{ .PWD }}{{ with .Segments.Git }} [{{ .Ref }}]{{ end }} > ",
     "foreground": "#FFC800",
     "background": "transparent"
   },
