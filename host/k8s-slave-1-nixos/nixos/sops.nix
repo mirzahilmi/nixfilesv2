@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  secretspath = "${builtins.toString inputs.mysecrets}/k3s.yaml";
+  secretspath = "${toString inputs.nixsecrets}/sops/k3s.yaml";
 in {
   imports = [inputs.sops-nix.nixosModules.sops];
   sops = {

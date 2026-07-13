@@ -10,46 +10,45 @@
     ssh-agent.enable = true;
   };
 
-  programs.spicetify = let
-    spicetifyPkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-  in {
-    enable = true;
-    # pin to pkgs.guiPackages.*
-    spicetifyPackage = pkgs.guiPackages.spicetify-cli;
-    spotifyPackage = pkgs.guiPackages.spotify;
-    spotifywmPackage = pkgs.guiPackages.spotifywm;
+  # programs.spicetify = let
+  #   spicetifyPkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  # in {
+  #   enable = true;
+  #   spicetifyPackage = pkgs.spicetify-cli;
+  #   spotifyPackage = pkgs.spotify;
+  #   spotifywmPackage = pkgs.spotifywm;
+  #
+  #   enabledCustomApps = with spicetifyPkgs.apps; [
+  #     betterLibrary
+  #     historyInSidebar
+  #     localFiles
+  #     lyricsPlus
+  #     marketplace
+  #     nameThatTune
+  #   ];
+  #   enabledExtensions = with spicetifyPkgs.extensions; [
+  #     adblock
+  #     beautifulLyrics
+  #     hidePodcasts
+  #     history
+  #     shuffle
+  #     volumePercentage
+  #   ];
+  # };
 
-    enabledCustomApps = with spicetifyPkgs.apps; [
-      betterLibrary
-      historyInSidebar
-      localFiles
-      lyricsPlus
-      marketplace
-      nameThatTune
-    ];
-    enabledExtensions = with spicetifyPkgs.extensions; [
-      adblock
-      beautifulLyrics
-      hidePodcasts
-      history
-      shuffle
-      volumePercentage
-    ];
-  };
-
-  programs.obs-studio = {
-    enable = true;
-    package = pkgs.guiPackages.obs-studio;
-    plugins = builtins.attrValues {
-      inherit
-        (pkgs.guiPackages.obs-studio-plugins)
-        wlrobs
-        input-overlay
-        obs-backgroundremoval
-        obs-pipewire-audio-capture
-        ;
-    };
-  };
+  # programs.obs-studio = {
+  #   enable = true;
+  #   package = pkgs.obs-studio;
+  #   plugins = builtins.attrValues {
+  #     inherit
+  #       (pkgs.obs-studio-plugins)
+  #       wlrobs
+  #       input-overlay
+  #       obs-backgroundremoval
+  #       obs-pipewire-audio-capture
+  #       ;
+  #   };
+  # };
 
   programs.direnv = {
     enable = true;
@@ -113,7 +112,7 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks =
+    settings =
       {
         "*".addKeysToAgent = "12h";
       }

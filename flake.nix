@@ -3,8 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-system.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-gui.url = "github:nixos/nixpkgs/nixos-25.11";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-24_05.url = "github:NixOS/nixpkgs/nixos-24.05";
@@ -19,6 +17,7 @@
     nvim.url = "github:mirzahilmi/nvim";
     nixsecrets.url = "git+ssh://git@ssh.github.com:443/mirzahilmi/nixsecrets";
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
+    bluevein.url = "github:meowrch/BlueVein";
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
@@ -118,9 +117,11 @@
         hostname = "t4nix";
         system = x86;
         modules = [
+          inputs.bluevein.nixosModules.default
+          inputs.determinate.nixosModules.default
           inputs.hardware.nixosModules.lenovo-thinkpad-t480s
-          inputs.nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
           inputs.minegrub-theme.nixosModules.default
+          inputs.nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
         ];
         args = {inherit secrets;};
       };

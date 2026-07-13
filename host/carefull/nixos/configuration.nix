@@ -7,11 +7,11 @@
 
   users.extraUsers."nixos" = {
     isNormalUser = true;
-    shell = pkgs.systemPackages.zsh;
+    shell = pkgs.zsh;
     extraGroups = ["wheel" "docker"];
     packages = with pkgs; [
       gnumake
-      systemPackages.home-manager
+      home-manager
     ];
   };
 

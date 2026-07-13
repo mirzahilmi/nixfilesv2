@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  terminal.font = "${pkgs.systemPackages.nerd-fonts.iosevka-term}/share/fonts/truetype/NerdFonts/IosevkaTerm/IosevkaTermNerdFont-Regular.ttf";
+  terminal.font = "${pkgs.nerd-fonts.iosevka-term}/share/fonts/truetype/NerdFonts/IosevkaTerm/IosevkaTermNerdFont-Regular.ttf";
 
   environment.packages = with pkgs; [
     btop

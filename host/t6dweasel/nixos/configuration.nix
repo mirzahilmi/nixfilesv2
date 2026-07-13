@@ -9,9 +9,9 @@
     isNormalUser = true;
     packages = with pkgs; [
       gnumake
-      systemPackages.home-manager
+      home-manager
     ];
-    shell = pkgs.systemPackages.zsh;
+    shell = pkgs.zsh;
   };
 
   environment.systemPackages = with pkgs; [

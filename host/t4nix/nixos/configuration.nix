@@ -19,33 +19,42 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   console = {
-    packages = [pkgs.systemPackages.terminus_font];
+    packages = [pkgs.terminus_font];
     earlySetup = true;
-    font = "${pkgs.systemPackages.terminus_font}/share/consolefonts/ter-132n.psf.gz";
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
     keyMap = "us";
   };
 
   users.extraUsers."${secrets.user.primary.username}" = {
     isNormalUser = true;
     extraGroups = secrets.user.primary.groups;
-    packages = [pkgs.systemPackages.home-manager];
-    shell = pkgs.systemPackages.zsh;
+    packages = [pkgs.home-manager];
+    shell = pkgs.zsh;
   };
 
   services = {
     desktopManager.plasma6.enable = true;
     tailscale.enable = true;
-    displayManager.gdm = {
-      enable = true;
-      wayland = true; # explicit
-    };
+    displayManager.gdm.enable = true;
     cloudflare-warp.enable = true;
   };
   services.packagekit.enable = false;
-  environment.plasma6.excludePackages = with pkgs.systemPackages.kdePackages; [
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
     discover
     elisa
   ];
+  services.bluevein = {
+    enable = true;
+    efiDevice = secrets.disk-by-uuid.t4nix.boot;
+  };
+
+  # AAC A2DP transport dies right after starting (HUAWEI FreeBuds SE 4 ANC),
+  # leaving only a split second of audio; restrict negotiation to SBC/SBC-XQ
+  services.pipewire.wireplumber.extraConfig."51-bluez-no-aac" = {
+    "monitor.bluez.properties" = {
+      "bluez5.codecs" = ["sbc" "sbc_xq"];
+    };
+  };
 
   # Fingerprint
   services."06cb-009a-fingerprint-sensor" = {
@@ -155,7 +164,7 @@
   programs = {
     nix-ld = {
       enable = true;
-      package = pkgs.systemPackages.nix-ld;
+      package = pkgs.nix-ld;
     };
     wireshark.enable = true;
     mtr.enable = true;

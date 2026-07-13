@@ -33,7 +33,7 @@
     ];
     packages = with pkgs; [
       fd
-      systemPackages.home-manager
+      home-manager
     ];
   };
 

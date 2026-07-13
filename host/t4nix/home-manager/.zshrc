@@ -32,7 +32,6 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
 setopt SHARE_HISTORY             # Share history between all sessions.
 
-setopt AUTOCD # cd without cd, e.x. cd Documents -> Documents
 setopt NOBEEP
 setopt NUMERIC_GLOB_SORT  # sort file10 after file9, not after file1
 
@@ -61,21 +60,23 @@ export _FZF_PREVIEW_CMD='bat --color=always --style=plain,numbers --line-range=:
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND" # Ctrl-T uses fd
 export FZF_CTRL_T_OPTS="--preview '$_FZF_PREVIEW_CMD'" # Ctrl-T preview use bat
 
-alias v="nvim"
-alias mk="make"
-alias l="lsd -lAh"
-alias ls="lsd"
-alias lg="lazygit"
-alias k9="k9s"
-alias k="kubectl"
-alias vs="warp-cli status"
-alias vc="warp-cli connect"
-alias vd="warp-cli disconnect"
+alias cc="claude"
+alias ccr="claude --resume"
 alias ga="git add -A"
 alias gc="git commit -m"
 alias gp="git push"
 alias gs="git status"
-alias -- -='cd -'  # prevents - being parsed as a flag; cd - jumps to previous directory
+alias k9="k9s"
+alias k="kubectl"
+alias l="lsd -lAh"
+alias lg="lazygit"
+alias ls="lsd"
+alias mk="make"
+alias psql="docker run --name temp_psql --interactive --tty --rm alpine/psql:latest"
+alias v="nvim"
+alias vc="warp-cli connect"
+alias vd="warp-cli disconnect"
+alias vs="warp-cli status"
 
 # keybinding
 bindkey -e # set text edit mode to emacs (default zsh)

@@ -20,7 +20,7 @@
   programs = {
     nix-ld = {
       enable = true;
-      package = pkgs.systemPackages.nix-ld;
+      package = pkgs.nix-ld;
     };
     nh = {
       enable = true;
@@ -121,8 +121,8 @@
       "audio"
       "docker"
     ];
-    packages = [pkgs.systemPackages.home-manager];
-    shell = pkgs.systemPackages.bash;
+    packages = [pkgs.home-manager];
+    shell = pkgs.bash;
   };
 
   environment.sessionVariables.EDITOR = "nvim";

@@ -11,30 +11,21 @@
 
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    age
-    android-tools
     bat
     btop
-    chafa
     delta
     dig
-    dive
     eduvpn-client
-    exiftool
     fastfetch
     fd
     fzf
     gnumake
-    hwinfo
-    inxi
     jq
     k9s
     kind
     kubectl
     kubectl-explore
     lazygit
-    libmbim
-    live-server
     lsd
     lz4
     mermaid-cli
@@ -43,48 +34,36 @@
     nmap
     open-github
     openssl
-    pciutils
-    release-please
+    python3
     ripgrep
     sops
     ssh-to-age
     tealdeer
-    tokei
     unzip
-    usbutils
+    uv
     wget
     wl-clipboard
     zip
     zoxide
     zstd
 
-    guiPackages.bitwarden-desktop
-    guiPackages.chromium
-    guiPackages.discord
-    guiPackages.drawio
-    guiPackages.ghostty
-    guiPackages.haruna
-    guiPackages.insomnia
-    guiPackages.jetbrains.datagrip
-    guiPackages.kdePackages.kclock
-    guiPackages.libreoffice-qt
-    guiPackages.librewolf
-    guiPackages.obsidian
-    guiPackages.parabolic
-    guiPackages.postman
-    guiPackages.slack
-    guiPackages.vscode
-    guiPackages.wireshark
-    guiPackages.zotero
+    chromium
+    drawio
+    ghostty
+    insomnia
+    jetbrains.datagrip
+    librewolf
+    obsidian
+    # wireshark
+    zathura
+    zotero
 
-    systemPackages.inter
-    systemPackages.nerd-fonts.iosevka-term
-    systemPackages.nerd-fonts.lilex
+    inter
+    nerd-fonts.iosevka-term
+    nerd-fonts.lilex
 
-    unstable.biome # fix https://github.com/biomejs/biome/issues/6623
-    unstable.claude-code
-    unstable.opencode
-    unstable.rendercv
+    claude-code
+    # unstable.rendercv
     unstable.rtk
   ];
 

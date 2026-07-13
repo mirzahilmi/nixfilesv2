@@ -22,7 +22,7 @@
   users.users."member" = {
     isNormalUser = true;
     extraGroups = ["wheel"];
-    packages = [pkgs.systemPackages.home-manager];
+    packages = [pkgs.home-manager];
   };
 
   security.sudo.extraRules = [
@@ -42,7 +42,7 @@
   services.k3s = {
     enable = true;
     role = "agent";
-    nodeName = "k8s-slave-1-nixos";
+    nodeName = "k8s-slave-1-vm";
     tokenFile = config.sops.secrets."k3s/token".path;
     configPath = config.sops.templates."k3s-config.yaml".path;
 
