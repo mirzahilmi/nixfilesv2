@@ -18,6 +18,7 @@
     dig
     fastfetch
     fd
+    ffmpeg-headless
     fzf
     gh
     jq
@@ -28,14 +29,18 @@
     lazygit
     lsd
     lz4
-    mitmproxy
     mermaid-cli
+    mitmproxy
     neovim
+    nodejs-slim
     open-github
     openssl
     postgresql # andai waktu bisa ngasih psql & pgbench doang
+    python3
     ripgrep
+    uv
     xdg-open
+    yt-dlp
     zoxide
     zstd
 
