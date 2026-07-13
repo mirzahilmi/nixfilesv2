@@ -4,7 +4,7 @@
 
 # see https://wiki.archlinux.org/title/Tmux#Start_tmux_on_every_shell_login
 if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
-    exec tmux new-session -A -s default >/dev/null 2>&1
+    exec tmux new-session -A -s '~default' >/dev/null 2>&1
 fi
 
 # see https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html#cli-command-completion-linux
@@ -67,11 +67,12 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND" # Ctrl-T uses fd
 export FZF_CTRL_T_OPTS="--preview '$_FZF_PREVIEW_CMD'" # Ctrl-T preview use bat
 
 alias cc="claude"
+alias ccr="claude --resume"
 alias dud="docker compose up --detach"
 alias ga="git add -A"
 alias gc="git commit -m"
 alias gp="git push"
-alias gs="git status"
+alias gs="git switch"
 alias k9="k9s"
 alias k="kubectl"
 alias l="lsd -lAh"
@@ -80,6 +81,7 @@ alias lg="lazygit"
 alias ls="lsd"
 alias mk="make"
 # alias npm="pnpm"
+alias nr="npm run"
 alias open="$BROWSER"
 alias v="nvim"
 
