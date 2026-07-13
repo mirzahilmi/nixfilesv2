@@ -715,11 +715,11 @@
         "wrappers": "wrappers"
       },
       "locked": {
-        "lastModified": 1782496411,
-        "narHash": "sha256-ooIsB9Bq0FHXWqVaG6tI+hxarW9h1RQrVRKUbggJHZ0=",
+        "lastModified": 1782886598,
+        "narHash": "sha256-L75rQYhZNsb7SQM+adVKLYJlBDMqbiuWokF/JTHUnXI=",
         "owner": "mirzahilmi",
         "repo": "nvim",
-        "rev": "c0f32b205f4dcf7a4d6398cf5409e15df5c45cfa",
+        "rev": "d67db51fca8d0a5e57451f6db83c3512a0d1fcec",
         "type": "github"
       },
       "original": {
