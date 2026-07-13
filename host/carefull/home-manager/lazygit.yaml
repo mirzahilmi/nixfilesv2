@@ -1,4 +1,9 @@
 ---
+gui:
+  sidePanels:
+    - [files, worktrees, submodules]
+    - [branches, remotes, tags]
+    - [commits, reflog]
 git:
   pagers:
     - pager: delta --dark --paging=never
