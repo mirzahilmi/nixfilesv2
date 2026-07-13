@@ -67,6 +67,10 @@
     unstable.rtk
   ];
 
+  home.file.".claude/settings.json".source =
+    config.lib.file.mkOutOfStoreSymlink
+    "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/claude_settings.json";
+
   xdg.configFile."ghostty/config".source =
     config.lib.file.mkOutOfStoreSymlink
     "${config.home.homeDirectory}/nixfilesv2/host/t4nix/home-manager/ghostty";
