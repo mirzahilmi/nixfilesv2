@@ -238,6 +238,12 @@
           Hello, TypeScript!
         '';
       };
+      latex = {
+        path = ./devshell/latex;
+        welcomeText = ''
+          Hello, LaTex!
+        '';
+      };
     };
   };
 }
