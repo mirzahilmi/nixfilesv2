@@ -13,6 +13,8 @@
   home.packages = with pkgs; [
     bat
     btop
+    ccometixline
+    claude-code
     delta
     dig
     eduvpn-client
@@ -47,14 +49,16 @@
     zoxide
     zstd
 
+    # GUIs
     chromium
     drawio
     ghostty
+    haruna
     insomnia
     jetbrains.datagrip
     librewolf
     obsidian
-    # wireshark
+    wireshark
     zathura
     zotero
 
@@ -62,8 +66,7 @@
     nerd-fonts.iosevka-term
     nerd-fonts.lilex
 
-    claude-code
-    # unstable.rendercv
+    unstable.rendercv
     unstable.rtk
   ];
 
