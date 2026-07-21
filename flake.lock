@@ -485,6 +485,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-frozen": {
+      "locked": {
+        "lastModified": 1784432872,
+        "narHash": "sha256-n3gKTBIV4ZA5VQpUakffBe3KGu4+mhPoA34rrqS0GkA=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "fd1462031fdee08f65fd0b4c6b64e22239a77870",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-26.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-regression": {
       "locked": {
         "lastModified": 1643052045,
@@ -643,11 +659,11 @@
     },
     "nixsecrets": {
       "locked": {
-        "lastModified": 1782542679,
-        "narHash": "sha256-bug3VMPRu9hKskWPupNbB/Kf7jGJhC7udRotvWg0GNE=",
+        "lastModified": 1784386665,
+        "narHash": "sha256-2lRAd4p1vP5wbccKHdq/67rTv3c/A+dqe1zO6L0uHYo=",
         "ref": "refs/heads/master",
-        "rev": "f0813a2f40d6b1a43e715facf2c351548aa92ea2",
-        "revCount": 7,
+        "rev": "13abd6f7002350def6e786d25bdc055ba2bc909a",
+        "revCount": 8,
         "type": "git",
         "url": "ssh://git@ssh.github.com:443/mirzahilmi/nixsecrets"
       },
@@ -762,6 +778,7 @@
         "nixpkgs-25_05": "nixpkgs-25_05",
         "nixpkgs-25_11": "nixpkgs-25_11",
         "nixpkgs-26_05": "nixpkgs-26_05",
+        "nixpkgs-frozen": "nixpkgs-frozen",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixsecrets": "nixsecrets",
         "nvim": "nvim",

@@ -9,6 +9,7 @@
     nixpkgs-25_05.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-25_11.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-26_05.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs-frozen.url = "github:nixos/nixpkgs/nixos-26.05";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/release-26.05";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager-26_05.url = "github:nix-community/home-manager/release-26.05";
