@@ -48,13 +48,13 @@
     efiDevice = secrets.disk-by-uuid.t4nix.boot;
   };
 
-  # AAC A2DP transport dies right after starting (HUAWEI FreeBuds SE 4 ANC),
-  # leaving only a split second of audio; restrict negotiation to SBC/SBC-XQ
-  services.pipewire.wireplumber.extraConfig."51-bluez-no-aac" = {
-    "monitor.bluez.properties" = {
-      "bluez5.codecs" = ["sbc" "sbc_xq"];
-    };
-  };
+  # # AAC A2DP transport dies right after starting (HUAWEI FreeBuds SE 4 ANC),
+  # # leaving only a split second of audio; restrict negotiation to SBC/SBC-XQ
+  # services.pipewire.wireplumber.extraConfig."51-bluez-no-aac" = {
+  #   "monitor.bluez.properties" = {
+  #     "bluez5.codecs" = ["sbc" "sbc_xq"];
+  #   };
+  # };
 
   # Fingerprint
   services."06cb-009a-fingerprint-sensor" = {
