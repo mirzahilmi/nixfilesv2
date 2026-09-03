@@ -54,13 +54,14 @@
       nixpkgs ? inputs.nixpkgs,
       hostname,
       system,
+      hostPath ? ./host/${hostname},
       modules ? [],
       args ? {},
     }:
       nixpkgs.lib.nixosSystem {
         inherit system;
         modules =
-          libx.listNixfiles ./host/${hostname}/nixos
+          libx.listNixfiles (hostPath + "/nixos")
           ++ libx.listNixfiles ./host/shared/nixos
           ++ modules;
         specialArgs = args // {inherit inputs outputs libx;};
@@ -71,12 +72,13 @@
       home-manager ? inputs.home-manager,
       hostname,
       system,
+      hostPath ? ./host/${hostname},
       modules ? [],
       args ? {},
     }:
       home-manager.lib.homeManagerConfiguration {
         modules =
-          libx.listNixfiles ./host/${hostname}/home-manager
+          libx.listNixfiles (hostPath + "/home-manager")
           ++ libx.listNixfiles ./host/shared/home-manager
           ++ modules;
         pkgs = nixpkgs.legacyPackages.${system};
@@ -157,6 +159,7 @@
       carefull = mkSystem {
         nixpkgs = inputs.nixpkgs-26_05;
         hostname = "carefull";
+        hostPath = inputs.nixsecrets.hosts.carefull;
         system = x86;
         modules = [
           inputs.nixos-wsl.nixosModules.default
@@ -203,6 +206,7 @@
         home-manager = inputs.home-manager-26_05;
         system = x86;
         hostname = "carefull";
+        hostPath = inputs.nixsecrets.hosts.carefull;
         args = {inherit secrets;};
       };
     };
