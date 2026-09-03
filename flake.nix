@@ -19,6 +19,7 @@
     nixsecrets.url = "git+ssh://git@ssh.github.com:443/mirzahilmi/nixsecrets";
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
     bluevein.url = "github:meowrch/BlueVein";
+    herdr.url = "github:herdrdev/herdr/v0.8.2";
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
