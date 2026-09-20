@@ -248,6 +248,28 @@
         "type": "github"
       }
     },
+    "home-manager_3": {
+      "inputs": {
+        "nixpkgs": [
+          "sofka",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788642154,
+        "narHash": "sha256-sPpQFVaFTDqO/4vvCAhuAhqTgqN/ygu+9eJcs5eB0js=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "fd0956c99c41ae3c13a73a638f1f7e963aebc4ab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-26.05",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "minegrub-theme": {
       "inputs": {
         "nixpkgs": "nixpkgs_7"
@@ -569,6 +591,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_11": {
+      "locked": {
+        "lastModified": 1788807765,
+        "narHash": "sha256-J9oC0bKnkXUrMegqRTXVkyDFJ0gn2U/Qpoo9HgGMQmA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "93108a538f079596c9a16c72cf03e9322782b6dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-26.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1773222311,
@@ -695,11 +733,11 @@
     },
     "nixsecrets": {
       "locked": {
-        "lastModified": 1788438725,
-        "narHash": "sha256-Gj3yzIrtJ8tGhQH/P1b/wKG0hchJh45NQedueQv4c9M=",
+        "lastModified": 1789538618,
+        "narHash": "sha256-j0GtYAMuKydajnA1le+ByG+6vFd5rEMaYhkwZX9kah0=",
         "ref": "refs/heads/master",
-        "rev": "bb6b57d0bcae895915e48f3cb201db59883ae136",
-        "revCount": 10,
+        "rev": "3afbadddbd73f42248da14bce099b5e00650c5e0",
+        "revCount": 15,
         "type": "git",
         "url": "ssh://git@ssh.github.com:443/mirzahilmi/nixsecrets"
       },
@@ -819,6 +857,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixsecrets": "nixsecrets",
         "nvim": "nvim",
+        "sofka": "sofka",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix"
       }
@@ -857,6 +896,25 @@
       "original": {
         "owner": "andreymatin",
         "repo": "scss-reset",
+        "type": "github"
+      }
+    },
+    "sofka": {
+      "inputs": {
+        "home-manager": "home-manager_3",
+        "nixpkgs": "nixpkgs_11"
+      },
+      "locked": {
+        "lastModified": 1789199589,
+        "narHash": "sha256-rFa2QWQjeSy83Nm2QcCR+euiv399+lDDaKQo6W5XqLM=",
+        "owner": "nklmilojevic",
+        "repo": "sofka",
+        "rev": "033517fdfdbdb89086a649fb3712e81a205f8896",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nklmilojevic",
+        "repo": "sofka",
         "type": "github"
       }
     },

@@ -20,6 +20,7 @@
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
     bluevein.url = "github:meowrch/BlueVein";
     herdr.url = "github:herdrdev/herdr/v0.8.2";
+    sofka.url = "github:nklmilojevic/sofka";
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";

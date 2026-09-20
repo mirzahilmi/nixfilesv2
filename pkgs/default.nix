@@ -11,13 +11,14 @@
   ssh-sign-me-up = final.writeShellScriptBin "ssh-sign-me-up" (builtins.readFile ./ssh-sign-me-up.sh);
   xdg-open = final.writeShellScriptBin "xdg-open" (builtins.readFile ./xdg-open.sh);
   herdr = inputs.herdr.packages.${final.stdenv.hostPlatform.system}.default;
+  sofka = inputs.sofka.packages.${final.stdenv.hostPlatform.system}.default;
 
   # bleeeedinggg edgeeee
   claude-code = prev.claude-code.overrideAttrs (old: rec {
-    version = "2.1.220";
+    version = "2.1.263";
     src = prev.fetchurl {
       url = "https://downloads.claude.ai/claude-code-releases/${version}/linux-x64/claude";
-      hash = "sha256-Z09h8g/zBvMQDPkgDkw2xLcCeLW+8ohFSYGblCqJyGM=";
+      hash = "sha256-JtAgNR6BEvQAZ5Dzz85DtMnfDBux0OVCNk1kFRuB1bo=";
     };
   });
 
