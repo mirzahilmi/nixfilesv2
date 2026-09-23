@@ -733,11 +733,11 @@
     },
     "nixsecrets": {
       "locked": {
-        "lastModified": 1789538618,
-        "narHash": "sha256-j0GtYAMuKydajnA1le+ByG+6vFd5rEMaYhkwZX9kah0=",
+        "lastModified": 1790066624,
+        "narHash": "sha256-vjMZNhdBGsLt//A7v7uufOL5bO457otwyxEmvKcU3fg=",
         "ref": "refs/heads/master",
-        "rev": "3afbadddbd73f42248da14bce099b5e00650c5e0",
-        "revCount": 15,
+        "rev": "8eefdc6c2a862c2605254967d5330eb103919230",
+        "revCount": 16,
         "type": "git",
         "url": "ssh://git@ssh.github.com:443/mirzahilmi/nixsecrets"
       },

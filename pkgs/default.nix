@@ -15,10 +15,10 @@
 
   # bleeeedinggg edgeeee
   claude-code = prev.claude-code.overrideAttrs (old: rec {
-    version = "2.1.263";
+    version = "2.1.280";
     src = prev.fetchurl {
       url = "https://downloads.claude.ai/claude-code-releases/${version}/linux-x64/claude";
-      hash = "sha256-JtAgNR6BEvQAZ5Dzz85DtMnfDBux0OVCNk1kFRuB1bo=";
+      hash = "sha256-HghQPb3zwssNcG0y80CCdziNHHbvEIZz6P5CwbMikls=";
     };
   });
 
