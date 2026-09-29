@@ -13,11 +13,21 @@
     ];
   };
 
-  networking.hostName = "nixsina";
+  networking = {
+    hostName = "nixsina";
+    networkmanager = {
+      enable = true;
+      # see https://github.com/NixOS/nixpkgs/issues/424326#issuecomment-3062893416
+      plugins = with pkgs; [networkmanager-openvpn];
+    };
+    nameservers = [secrets.nameserver.default];
+  };
   system.stateVersion = "23.11";
+
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   programs = {
+    zsh.enable = true;
     nix-ld = {
       enable = true;
       package = pkgs.nix-ld;
@@ -49,35 +59,24 @@
       ;
   };
 
-  services.xserver = {
-    enable = true;
-    desktopManager.gnome.enable = true;
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
-    };
+  console = {
+    packages = [pkgs.terminus_font];
+    earlySetup = true;
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
+    keyMap = "us";
   };
-  environment.gnome.excludePackages = builtins.attrValues {
-    inherit
-      (pkgs)
-      atomix
-      cheese
-      epiphany
-      geary
-      gedit
-      gnome-contacts
-      gnome-maps
-      gnome-music
-      gnome-terminal
-      gnome-text-editor
-      gnome-tour
-      hitori
-      iagno
-      tali
-      xterm
-      yelp
-      ;
+
+  services = {
+    desktopManager.plasma6.enable = true;
+    tailscale.enable = true;
+    displayManager.gdm.enable = true;
+    cloudflare-warp.enable = true;
   };
+  services.packagekit.enable = false;
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    discover
+    elisa
+  ];
 
   boot.loader = {
     timeout = 5;
@@ -98,21 +97,21 @@
   };
 
   services.openssh.enable = true;
-  networking = {
-    interfaces.eno1.ipv4.addresses = [
-      {
-        address = "10.34.239.139";
-        prefixLength = 23;
-      }
-    ];
-    defaultGateway = {
-      address = "10.34.238.1";
-      interface = "eno1";
-    };
-  };
+  # networking = {
+  #   interfaces.eno1.ipv4.addresses = [
+  #     {
+  #       address = "10.34.239.139";
+  #       prefixLength = 23;
+  #     }
+  #   ];
+  #   defaultGateway = {
+  #     address = "10.34.238.1";
+  #     interface = "eno1";
+  #   };
+  # };
 
-  services.logind.lidSwitch = "lock";
-  services.xserver.displayManager.gdm.autoSuspend = false;
+  # services.logind.lidSwitch = "lock";
+  # services.xserver.displayManager.gdm.autoSuspend = false;
 
   users.extraUsers."${secrets.user.primary.username}" = {
     isNormalUser = true;
@@ -122,13 +121,12 @@
       "docker"
     ];
     packages = [pkgs.home-manager];
-    shell = pkgs.bash;
+    shell = pkgs.zsh;
   };
 
   environment.sessionVariables.EDITOR = "nvim";
 
   services.xserver.videoDrivers = ["nvidia"];
-  services.tailscale.enable = true;
   # see https://github.com/tailscale/tailscale/issues/4254#issuecomment-1075318898
   services.resolved.enable = true;
 }
