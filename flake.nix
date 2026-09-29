@@ -140,6 +140,7 @@
         args = {inherit secrets;};
       };
       nixsina = mkSystem {
+        nixpkgs = inputs.nixpkgs-26_05;
         hostname = "nixsina";
         system = x86;
         modules = [
@@ -191,6 +192,8 @@
         args = {inherit secrets;};
       };
       "nixsina@nixsina" = mkHome {
+        nixpkgs = inputs.nixpkgs-26_05;
+        home-manager = inputs.home-manager-26_05;
         system = x86;
         hostname = "nixsina";
         args = {inherit secrets;};
