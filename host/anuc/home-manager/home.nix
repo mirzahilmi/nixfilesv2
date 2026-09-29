@@ -16,6 +16,7 @@
     lz4
     neovim
     nmap
+    wl-clipboard
     zstd
   ];
 
