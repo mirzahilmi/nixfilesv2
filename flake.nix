@@ -143,6 +143,7 @@
         hostname = "nixsina";
         system = x86;
         modules = [
+          inputs.determinate.nixosModules.default
           inputs.hardware.nixosModules.lenovo-legion-15arh05h
         ];
         args = {inherit secrets;};
