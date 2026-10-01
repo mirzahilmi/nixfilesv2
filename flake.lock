@@ -248,28 +248,6 @@
         "type": "github"
       }
     },
-    "home-manager_3": {
-      "inputs": {
-        "nixpkgs": [
-          "sofka",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1788642154,
-        "narHash": "sha256-sPpQFVaFTDqO/4vvCAhuAhqTgqN/ygu+9eJcs5eB0js=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "fd0956c99c41ae3c13a73a638f1f7e963aebc4ab",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "ref": "release-26.05",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
     "minegrub-theme": {
       "inputs": {
         "nixpkgs": "nixpkgs_7"
@@ -591,22 +569,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_11": {
-      "locked": {
-        "lastModified": 1788807765,
-        "narHash": "sha256-J9oC0bKnkXUrMegqRTXVkyDFJ0gn2U/Qpoo9HgGMQmA=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "93108a538f079596c9a16c72cf03e9322782b6dd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-26.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1773222311,
@@ -857,7 +819,6 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixsecrets": "nixsecrets",
         "nvim": "nvim",
-        "sofka": "sofka",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix"
       }
@@ -896,25 +857,6 @@
       "original": {
         "owner": "andreymatin",
         "repo": "scss-reset",
-        "type": "github"
-      }
-    },
-    "sofka": {
-      "inputs": {
-        "home-manager": "home-manager_3",
-        "nixpkgs": "nixpkgs_11"
-      },
-      "locked": {
-        "lastModified": 1789199589,
-        "narHash": "sha256-rFa2QWQjeSy83Nm2QcCR+euiv399+lDDaKQo6W5XqLM=",
-        "owner": "nklmilojevic",
-        "repo": "sofka",
-        "rev": "033517fdfdbdb89086a649fb3712e81a205f8896",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nklmilojevic",
-        "repo": "sofka",
         "type": "github"
       }
     },
