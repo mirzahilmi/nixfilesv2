@@ -10,21 +10,39 @@
   };
 
   fonts.fontconfig.enable = true;
-  home.packages = with pkgs; [
+  home.packages = with pkgs; let
+    python3 = pkgs.python3.withPackages (ps: with ps; [defusedxml lxml]);
+  in [
     bat
+    brave
     btop
     claude-code
+    eduvpn-client
+    fd
+    ffmpeg-headless
     fzf
+    gh
     ghostty
     gnumake
+    kubectl
     lazygit
+    libreoffice
     librewolf
     lsd
     neovim
+    nodejs
     nvtopPackages.nvidia
     obsidian
+    pandoc
+    pnpm
+    poppler-utils
+    python3
+    sofka
     tmux
+    unzip
+    uv
     xdg-utils
+    zip
     zoxide
     zstd
 
