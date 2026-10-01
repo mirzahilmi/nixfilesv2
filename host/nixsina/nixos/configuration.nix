@@ -69,7 +69,7 @@
   services = {
     desktopManager.plasma6.enable = true;
     tailscale.enable = true;
-    displayManager.gdm.enable = true;
+    displayManager.sddm.enable = true;
     cloudflare-warp.enable = true;
   };
   services.packagekit.enable = false;

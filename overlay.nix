@@ -61,6 +61,29 @@
           };
         in
           derivedPkg;
+
+        # the sddm module appends pkgs.qt6.qtwayland, which mismatches the
+        # frozen Qt used here; swap in frozen's qtwayland
+        sddm = let
+          basePkg = kdePrev.sddm;
+        in
+          basePkg
+          // {
+            override = f:
+              basePkg.override (old: let
+                new = f old;
+              in
+                new
+                // {
+                  extraPackages =
+                    map
+                    (p:
+                      if p == final.qt6.qtwayland
+                      then kdeFinal.qtwayland
+                      else p)
+                    new.extraPackages;
+                });
+          };
       }
     );
   };
