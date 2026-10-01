@@ -37,6 +37,7 @@
     pnpm
     poppler-utils
     python3
+    smartmontools
     sofka
     tmux
     unzip
