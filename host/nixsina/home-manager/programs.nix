@@ -114,5 +114,5 @@
   };
   xdg.configFile."zsh/extra.zshrc".source =
     config.lib.file.mkOutOfStoreSymlink
-    "${config.home.homeDirectory}/nixfilesv2/host/nixsina/home-manager/.zshrc";
+    "${config.home.homeDirectory}/nixfilesv2/host/nixsina/config.d/.zshrc";
 }

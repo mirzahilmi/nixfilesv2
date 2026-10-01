@@ -72,13 +72,13 @@
 
   xdg.configFile."oh-my-posh/config.json".source =
     config.lib.file.mkOutOfStoreSymlink
-    "${config.home.homeDirectory}/nixfilesv2/host/nixsina/home-manager/ohmyposh.json";
+    "${config.home.homeDirectory}/nixfilesv2/host/nixsina/config.d/ohmyposh.json";
   xdg.configFile."tmux/tmux.conf".source =
     config.lib.file.mkOutOfStoreSymlink
-    "${config.home.homeDirectory}/nixfilesv2/host/nixsina/home-manager/tmux.conf";
+    "${config.home.homeDirectory}/nixfilesv2/host/nixsina/config.d/tmux.conf";
   xdg.configFile."ghostty/config".source =
     config.lib.file.mkOutOfStoreSymlink
-    "${config.home.homeDirectory}/nixfilesv2/host/nixsina/home-manager/ghostty";
+    "${config.home.homeDirectory}/nixfilesv2/host/nixsina/config.d/ghostty";
 
   xdg.configFile."ghostty/shaders" = {
     recursive = true;
