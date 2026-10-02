@@ -24,6 +24,7 @@
     gh
     ghostty
     gnumake
+    helium
     kubectl
     lazygit
     libreoffice
@@ -37,6 +38,7 @@
     pnpm
     poppler-utils
     python3
+    ripgrep
     smartmontools
     sofka
     tmux
@@ -56,18 +58,18 @@
     enable = true;
     # see https://mimetype.io/all-types
     defaultApplications = {
-      "x-scheme-handler/http" = ["librewolf.desktop"];
-      "x-scheme-handler/https" = ["librewolf.desktop"];
-      "x-scheme-handler/ftp" = ["librewolf.desktop"];
-      "text/html" = ["librewolf.desktop"];
-      "application/xhtml+xml" = ["librewolf.desktop"];
-      "application/pdf" = ["librewolf.desktop"];
-      "text/uri-list" = ["librewolf.desktop"];
-      "application/x-extension-htm" = ["librewolf.desktop"];
-      "application/x-extension-html" = ["librewolf.desktop"];
-      "application/x-extension-shtml" = ["librewolf.desktop"];
-      "application/x-extension-xhtml" = ["librewolf.desktop"];
-      "application/x-extension-xht" = ["librewolf.desktop"];
+      "x-scheme-handler/http" = ["helium.desktop"];
+      "x-scheme-handler/https" = ["helium.desktop"];
+      "x-scheme-handler/ftp" = ["helium.desktop"];
+      "text/html" = ["helium.desktop"];
+      "application/xhtml+xml" = ["helium.desktop"];
+      "application/pdf" = ["helium.desktop"];
+      "text/uri-list" = ["helium.desktop"];
+      "application/x-extension-htm" = ["helium.desktop"];
+      "application/x-extension-html" = ["helium.desktop"];
+      "application/x-extension-shtml" = ["helium.desktop"];
+      "application/x-extension-xhtml" = ["helium.desktop"];
+      "application/x-extension-xht" = ["helium.desktop"];
     };
   };
 

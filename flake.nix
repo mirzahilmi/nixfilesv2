@@ -37,6 +37,10 @@
       url = "github:nix-community/nix-on-droid/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs-24_05";
     };
+    helium = {
+      url = "github:oxcl/nix-flake-helium-browser";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {self, ...} @ inputs: let
@@ -196,6 +200,9 @@
         home-manager = inputs.home-manager-26_05;
         system = x86;
         hostname = "nixsina";
+        modules = [
+          {nixpkgs.overlays = [inputs.helium.overlays.default];}
+        ];
         args = {inherit secrets;};
       };
       "t6dweasel@t6dweasel" = mkHome {
