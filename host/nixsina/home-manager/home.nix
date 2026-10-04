@@ -14,7 +14,6 @@
     python3 = pkgs.python3.withPackages (ps: with ps; [defusedxml lxml]);
   in [
     bat
-    brave
     btop
     claude-code
     eduvpn-client
@@ -33,6 +32,7 @@
     neovim
     nodejs
     nvtopPackages.nvidia
+    obs-studio
     obsidian
     pandoc
     pnpm
@@ -48,6 +48,8 @@
     zip
     zoxide
     zstd
+
+    frozen.haruna
 
     nerd-fonts.iosevka-term
   ];
