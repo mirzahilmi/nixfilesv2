@@ -11,7 +11,7 @@
   ssh-sign-me-up = final.writeShellScriptBin "ssh-sign-me-up" (builtins.readFile ./ssh-sign-me-up.sh);
   xdg-open = final.writeShellScriptBin "xdg-open" (builtins.readFile ./xdg-open.sh);
   wt = final.writeShellScriptBin "wt" (builtins.readFile ./wt.sh);
-  herdr = inputs.herdr.packages.${final.stdenv.hostPlatform.system}.default;
+  herdr = final.callPackage ./herdr.nix {};
   sofka = final.callPackage ./sofka.nix {};
 
   # bleeeedinggg edgeeee
